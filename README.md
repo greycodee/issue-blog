@@ -11,3 +11,4 @@
 
 ## 搞机
 - [小米(umi)使用 fastboot 刷机](https://github.com/greycodee/issues-blog/issues/6)
+- [小米(umi)刷入 Magisk](https://github.com/greycodee/issues-blog/issues/7)
