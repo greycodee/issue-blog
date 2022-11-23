@@ -1,5 +1,8 @@
 # 目录
 
+## 学习
+- [OpenResty 安装入门教程](https://github.com/greycodee/issues-blog/issues/8)
+
 ## 工具
 - [使用certbot](https://github.com/greycodee/issues-blog/issues/3)
 - [使用 ab 命令对 http 服务进行压测](https://github.com/greycodee/issues-blog/issues/4)
