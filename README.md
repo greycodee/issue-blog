@@ -9,6 +9,7 @@
 - [使用 http_load 对 http 服务进行压测](https://github.com/greycodee/issues-blog/issues/5)
 - [neovim 和 packer 包管理器安装](https://github.com/greycodee/issues-blog/issues/16)
 - [coc.nvim 插件安装](https://github.com/greycodee/issues-blog/issues/17)
+- [neovim 配置 nvim-tree 文件树](https://github.com/greycodee/issues-blog/issues/19)
 
 ## 问题解决
 - [nginx 配置反向代理后响应502解决办法](https://github.com/greycodee/issue-blog/issues/1#issue-1456487046)
