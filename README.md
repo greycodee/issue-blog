@@ -2,6 +2,7 @@
 
 ## 学习
 - [OpenResty 安装入门教程](https://github.com/greycodee/issues-blog/issues/8)
+- [高性能网关基石——OpenResty](https://github.com/greycodee/issues-blog/issues/15)
 
 ## 工具
 - [使用certbot](https://github.com/greycodee/issues-blog/issues/3)
