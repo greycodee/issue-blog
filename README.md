@@ -19,6 +19,7 @@
 - [vite 项目配置跨域代理](https://github.com/greycodee/issues-blog/issues/13)
 - [电脑安装 anaconda 后，激活环境导致 zsh 主题失效解决方法](https://github.com/greycodee/issues-blog/issues/14)
 - [Docker 构建镜像时设置网络代理](https://github.com/greycodee/issues-blog/issues/21)
+- [lldb 添加 python 脚本](https://github.com/greycodee/issues-blog/issues/22)
 
 ## 搞机
 - [小米(umi)使用 fastboot 刷机](https://github.com/greycodee/issues-blog/issues/6)
