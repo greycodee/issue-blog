@@ -21,6 +21,7 @@
 - [Docker 构建镜像时设置网络代理](https://github.com/greycodee/issues-blog/issues/21)
 - [lldb 添加 python 脚本](https://github.com/greycodee/issues-blog/issues/22)
 - [VSCode 设置 markdown snippets](https://github.com/greycodee/issues-blog/issues/23)
+- [oci-go-sdk 配置文件创建流程](https://github.com/greycodee/issues-blog/issues/23)
 
 ## 搞机
 - [小米(umi)使用 fastboot 刷机](https://github.com/greycodee/issues-blog/issues/6)
