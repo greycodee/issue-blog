@@ -1,0 +1,26 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="原文：https://blog.csdn.net/austin1000/article/details/125840927## 原因Oracle Cloud vps建立成功后，在 VNIC 子网中安全组中配置了端口还是无法访问。## 解决办法在 VNIC 子网中配置安全组，开启外部需要访问的端口。然后关闭系统防火墙### ubuntushell# 开放所有端口iptables -P INPUT ACCEPTiptables -P FORWARD ACCEPTiptables -P OUTPUT ACCEPTiptables -F# 删除防火墙apt-get purge netfilter-persistent && reboot或 rm -rf /etc/iptables && reboot### Centosshell# 删除多余附件systemctl stop oracle-cloud-agentsystemctl disable oracle-cloud-agentsystemctl stop oracle-cloud-agent-updatersystemctl disable oracle-cloud-agent-updater# 关闭防火墙并禁止自启动systemctl stop firewalld.servicesystemctl disable firewalld."><title>Oracle Cloud 实例开启端口访问</title><link rel="shortcut icon" type=image/x-icon href=/issues-blog/><link rel=stylesheet href=/issues-blog/css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css integrity="sha512-6+FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ=="></head><body a=auto><main class=page-content aria-label=Content><div class=w><a href=/>..</a><article><p class=post-meta><time datetime="2023-03-17 14:58:25 +0800 +0800">2023-03-17</time></p><h1>Oracle Cloud 实例开启端口访问</h1><blockquote><p>原文：https://blog.csdn.net/austin1000/article/details/125840927
+## 原因
+Oracle Cloud vps建立成功后，在 VNIC 子网中安全组中配置了端口还是无法访问。
+## 解决办法
+在 VNIC 子网中配置安全组，开启外部需要访问的端口。
+<strong>然后关闭系统防火墙</strong>
+### ubuntu
+<code>shell
+# 开放所有端口
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -F
+# 删除防火墙
+apt-get purge netfilter-persistent && reboot
+或 rm -rf /etc/iptables && reboot</code>
+### Centos
+<code>shell
+# 删除多余附件
+systemctl stop oracle-cloud-agent
+systemctl disable oracle-cloud-agent
+systemctl stop oracle-cloud-agent-updater
+systemctl disable oracle-cloud-agent-updater
+# 关闭防火墙并禁止自启动
+systemctl stop firewalld.service
+systemctl disable firewalld.service</code></p></blockquote></article></div></main></body></html>

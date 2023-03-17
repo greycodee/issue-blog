@@ -1,0 +1,40 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="安装 neovim- ArchLinux shellsudo pacman -S neovim更多安装方式查看官方安装文档## 安装 packer 包管理器我们可以使用 packer 来管理 neovim 的插件- Unix/Linux 系统下安装(需要先安装git，如有直接执行下面命令)shellgit clone --depth 1 https://github.com/wbthomason/packer.nvim\~/.local/share/nvim/site/pack/packer/start/packer.nvim- Windows PowerShell 下安装```shellgit clone https://github.com/wbthomason/packer.nvim &ldquo;$env:LOCALAPPDATA vim-data\site\pack\packer\start\packer.nvim&rdquo;## 配置 packer 包管理器安装后，我们需要新建文件`~/.config/nvim/init.vim`> 这是 neovim 配置文件shellmkdir -p ~/.config/nvim && touch ~/.config/nvim/init.vim然后再新建一个文件`~/.config/nvim/lua/plugins.lua`> 这是packer管理插件的配置shellmkdir -p ~/.config/nvim/lua && touch ~/.config/nvim/lua/plugins.lua然后编辑`~/.config/nvim/init.vim`配置，填入如下内容lualua require(&lsquo;plugins&rsquo;)编辑`~/.config/nvim/lua/plugins.lua`，填入如下内容luavim."><title>neovim 和 packer 包管理器安装</title><link rel="shortcut icon" type=image/x-icon href=/issues-blog/><link rel=stylesheet href=/issues-blog/css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css integrity="sha512-6+FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ=="></head><body a=auto><main class=page-content aria-label=Content><div class=w><a href=/>..</a><article><p class=post-meta><time datetime="2023-03-17 14:58:23 +0800 +0800">2023-03-17</time></p><h1>neovim 和 packer 包管理器安装</h1><h2 id=安装-neovim---archlinux--shell-sudo-pacman--s-neovim--更多安装方式查看官方安装文档httpsgithubcomneovimneovimwikiinstalling-neoviminstall-from-download---安装-packer-包管理器-我们可以使用-packer-来管理-neovim-的插件---unixlinux-系统下安装需要先安装git如有直接执行下面命令-shell-git-clone---depth-1-httpsgithubcomwbthomasonpackernvim-localsharenvimsitepackpackerstartpackernvim----windows-powershell-下安装-shell-git-clone-httpsgithubcomwbthomasonpackernvim-envlocalappdata>安装 neovim
+- ArchLinux
+<code>shell
+sudo pacman -S neovim</code>
+更多安装方式查看<a href=https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-download>官方安装文档</a>
+## 安装 packer 包管理器
+我们可以使用 packer 来管理 neovim 的插件
+- Unix/Linux 系统下安装(需要先安装git，如有直接执行下面命令)
+<code>shell
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+~/.local/share/nvim/site/pack/packer/start/packer.nvim</code>
+- Windows PowerShell 下安装
+```shell
+git clone <a href=https://github.com/wbthomason/packer.nvim>https://github.com/wbthomason/packer.nvim</a> &ldquo;$env:LOCALAPPDATA</h2><p>vim-data\site\pack\packer\start\packer.nvim&rdquo;
+<code>## 配置 packer 包管理器
+安装后，我们需要新建文件`~/.config/nvim/init.vim`
+> 这是 neovim 配置文件
+</code>shell
+mkdir -p ~/.config/nvim && touch ~/.config/nvim/init.vim
+<code>然后再新建一个文件`~/.config/nvim/lua/plugins.lua`
+> 这是packer管理插件的配置
+</code>shell
+mkdir -p ~/.config/nvim/lua && touch ~/.config/nvim/lua/plugins.lua
+<code>然后编辑`~/.config/nvim/init.vim`配置，填入如下内容
+</code>lua
+lua require(&lsquo;plugins&rsquo;)
+<code>编辑`~/.config/nvim/lua/plugins.lua`，填入如下内容
+</code>lua
+vim.cmd [[packadd packer.nvim]]
+return require(&lsquo;packer&rsquo;).startup(function()
+&ndash; Packer can manage itself
+use &lsquo;wbthomason/packer.nvim&rsquo;
+&ndash; You add plugins here
+end)
+<code>## Done
+Packer 命令
+</code>shell
+# 安装/更新/删除插件 直接执行这个命令
+nvim +PackerSync
+```</p></article></div></main></body></html>

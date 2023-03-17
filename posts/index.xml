@@ -1,19 +1,422 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Issues Blog</title><link>https://blog.greycode.top/issues-blog/posts/</link><description>Recent content in Posts on Issues Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 17 Mar 2023 05:34:03 +0000</lastBuildDate><atom:link href="https://blog.greycode.top/issues-blog/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>TEST测试标题</title><link>https://blog.greycode.top/issues-blog/posts/39/</link><pubDate>Fri, 17 Mar 2023 05:34:03 +0000</pubDate><guid>https://blog.greycode.top/issues-blog/posts/39/</guid><description>哈苏德 阿斯顿</description></item><item><title>$TITLE</title><link>https://blog.greycode.top/issues-blog/posts/38/</link><pubDate>Fri, 17 Mar 2023 05:29:30 +0000</pubDate><guid>https://blog.greycode.top/issues-blog/posts/38/</guid><description>大时代 啊啊</description></item><item><title>37</title><link>https://blog.greycode.top/issues-blog/posts/37/</link><pubDate>Fri, 17 Mar 2023 04:57:14 +0000</pubDate><guid>https://blog.greycode.top/issues-blog/posts/37/</guid><description>大时代 得到的</description></item><item><title>35</title><link>https://blog.greycode.top/issues-blog/posts/35/</link><pubDate>Fri, 17 Mar 2023 04:44:27 +0000</pubDate><guid>https://blog.greycode.top/issues-blog/posts/35/</guid><description>大师 耳机标题 fn main(){ println!(&amp;#34;hello world&amp;#34;); }</description></item><item><title>34</title><link>https://blog.greycode.top/issues-blog/posts/34/</link><pubDate>Fri, 17 Mar 2023 04:41:42 +0000</pubDate><guid>https://blog.greycode.top/issues-blog/posts/34/</guid><description>微信公众号：颜家大少 关注可了解更多的教程及排版技巧。问题或建议，请公众号留言; 如果你觉得Md2All对你有帮助，欢迎赞赏[^1]
-###内容目录（由[TOC]自动生成）
-[TOC] ###关于网站访问慢的问题 有时网站的访问不稳定，可分别尝试不同的服务器 服务器1,http://md.aclickall.com 服务器2,http://md2.aclickall.com
-###Md2All 简介 Markdown排版利器，支持 &amp;ldquo;一键排版&amp;rdquo; 、自定义css、80多种代码高亮。 能让Markdown内容，无需作任何调整就能一键复制到微信公众号、博客园、掘金、知乎、csdn、51cto、wordpress、hexo。。。等平台。 支持把图片自动上传到云图床; 支持Latex数学公式在公众号等平台完美显示; 支持生成带样式的html文件; 甚至支持直接用原生的html,css排版。
-####详细教程 Md2All详细教程,请参考：https://www.cnblogs.com/garyyan/p/8329343.html ####对公众号、博客的优化 支持代码块，并解决常见的代码块换行不正确,特别是iPone、iPad上不能滚动的问题; 解决把内容粘贴到公众号时，图片、或样式丢失的问题;
-支持直接把页面&amp;quot;复制&amp;quot;到 &amp;ldquo;CSDN&amp;rdquo; 和 &amp;ldquo;博客园&amp;rdquo; 中，所有的样式保持一致。 请参考此博文：http://blog.csdn.net/gary_yan/article/details/78645303 支持直接把页面&amp;quot;复制&amp;quot;到 &amp;ldquo;掘金&amp;rdquo; 中： 请参考此博文：https://juejin.im/post/5a1bcc6ef265da431f4acb09 支持直接把页面&amp;quot;复制&amp;quot;到 &amp;ldquo;知乎&amp;rdquo; 、51CTO、worpress ,hex&amp;hellip;&amp;hellip;中。
-###代码块显示效果 注：markdown对代码块的语法是开始和结束行都要添加：```,其中 ` 为windows键盘左上角那个，如下：
-public class MyActivity extends AppCompatActivity {
-@Override //override the function
-protected void onCreate(@Nullable Bundle savedInstanceState) {
-super.onCreate(savedInstanceState);
-try {
-OkhttpManager.getInstance().setTrustrCertificates(getAssets().open(&amp;#34;mycer.cer&amp;#34;);
-OkHttpClient mOkhttpClient= OkhttpManager.getInstance().build();
-} catch (IOException e) {
-e.</description></item><item><title>33</title><link>https://blog.greycode.top/issues-blog/posts/33/</link><pubDate>Fri, 17 Mar 2023 04:38:54 +0000</pubDate><guid>https://blog.greycode.top/issues-blog/posts/33/</guid><description>大 大时代 啊啊啊啊睡得正香</description></item><item><title>32</title><link>https://blog.greycode.top/issues-blog/posts/32/</link><pubDate>Fri, 17 Mar 2023 04:35:21 +0000</pubDate><guid>https://blog.greycode.top/issues-blog/posts/32/</guid><description>asdzxcas
-# da
-## das</description></item><item><title>31</title><link>https://blog.greycode.top/issues-blog/posts/31/</link><pubDate>Fri, 17 Mar 2023 04:22:42 +0000</pubDate><guid>https://blog.greycode.top/issues-blog/posts/31/</guid><description>阿萨达到啊
-# 大时代</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Issues Blog</title><link>https://blog.greycode.top/issues-blog/posts/</link><description>Recent content in Posts on Issues Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 17 Mar 2023 07:00:51 +0000</lastBuildDate><atom:link href="https://blog.greycode.top/issues-blog/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>创建Github Action 工作流</title><link>https://blog.greycode.top/issues-blog/posts/40/</link><pubDate>Fri, 17 Mar 2023 07:00:51 +0000</pubDate><guid>https://blog.greycode.top/issues-blog/posts/40/</guid><description>gg</description></item><item><title>nginx 配置反向代理后响应502解决办法</title><link>https://blog.greycode.top/issues-blog/posts/1/</link><pubDate>Fri, 17 Mar 2023 14:58:25 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/1/</guid><description>问题
+在配置反响代理到本地 127.0.0.1:7788 这个地址后，请求 nginx 地址响应 502
+查看 /var/log/nginx/error.log 日志文件提示如下：
+shell
+2022/11/19 08:51:11 [crit] 4210#0: *1 connect() to 127.0.0.1:7788 failed (13: Permission denied) while connecting to upstream, client: 20.222.186.137, server: ntfy.greycode.top, request: &amp;quot;GET / HTTP/1.1&amp;quot;, upstream: &amp;quot;http://127.0.0.1:7788/&amp;quot;, host: &amp;quot;test.com&amp;quot;
+## 解决
+根据stackoverflow的回答，执行如下命令解决问题
+shell
+setsebool -P httpd_can_network_connect 1</description></item><item><title>Oracle Cloud 实例开启端口访问</title><link>https://blog.greycode.top/issues-blog/posts/2/</link><pubDate>Fri, 17 Mar 2023 14:58:25 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/2/</guid><description>原文：https://blog.csdn.net/austin1000/article/details/125840927
+## 原因
+Oracle Cloud vps建立成功后，在 VNIC 子网中安全组中配置了端口还是无法访问。
+## 解决办法
+在 VNIC 子网中配置安全组，开启外部需要访问的端口。
+然后关闭系统防火墙
+### ubuntu
+shell
+# 开放所有端口
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -F
+# 删除防火墙
+apt-get purge netfilter-persistent &amp;amp;&amp;amp; reboot
+或 rm -rf /etc/iptables &amp;amp;&amp;amp; reboot
+### Centos
+shell
+# 删除多余附件
+systemctl stop oracle-cloud-agent
+systemctl disable oracle-cloud-agent
+systemctl stop oracle-cloud-agent-updater
+systemctl disable oracle-cloud-agent-updater
+# 关闭防火墙并禁止自启动
+systemctl stop firewalld.service
+systemctl disable firewalld.</description></item><item><title>使用 ab 命令对 http 服务进行压测</title><link>https://blog.greycode.top/issues-blog/posts/4/</link><pubDate>Fri, 17 Mar 2023 14:58:25 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/4/</guid><description>ab命令全称为：Apache bench 。是Apache自带的压力测试工具。ab命令非常实用，它不仅可以对Apache服务器进行网站访问压力测试，也可以对或其它类型的服务器进行压力测试。可以测试安装Web服务器每秒种处理的HTTP请求。
+## 使用 Go 创建一个简单的 http 接口
+go
+package main
+import (
+&amp;quot;log&amp;quot;
+&amp;quot;net/http&amp;quot;
+)
+func main() {
+http.HandleFunc(&amp;quot;/hello&amp;quot;, func(w http.ResponseWriter, r *http.Request) {
+w.Write([]byte(&amp;quot;Hello World&amp;quot;))
+})
+err := http.ListenAndServe(&amp;quot;:8888&amp;quot;, nil)
+if err != nil {
+log.Fatalf(&amp;quot;ListenAndServe: %v&amp;quot;, err)
+}
+}
+## 使用 ab 命令进行压测
+shell
+# 并发 1 00 个连接，共 10000 个请求
+ab -n 10000 -c 100 http://localhost:8888/hello
+结果：
+shell
+This is ApacheBench, Version 2.3 &amp;lt;$Revision: 1901567 $&amp;gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.</description></item><item><title>使用certbot</title><link>https://blog.greycode.top/issues-blog/posts/3/</link><pubDate>Fri, 17 Mar 2023 14:58:25 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/3/</guid><description>shell
+1 dnf install certbot
+2 yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+3 dnf install certbot
+4 dnf install python3-certbot-nginx
+5 dnf install nginx
+6 nginx
+7 systemctl stop oracle-cloud-agent
+8 systemctl disable oracle-cloud-agent
+9 systemctl stop oracle-cloud-agent-updater
+10 systemctl disable oracle-cloud-agent-updater
+11 systemctl stop firewalld.service
+12 systemctl disable firewalld.service
+13 certbot --nginx -d bark.greycode.top
+14 history</description></item><item><title>Docker 客户端(Linux)配置代理 pull 镜像</title><link>https://blog.greycode.top/issues-blog/posts/11/</link><pubDate>Fri, 17 Mar 2023 14:58:24 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/11/</guid><description>原因
+身处墙国，拉取镜像非常慢，所以要设置代理来提升拉取镜像的速度。
+## 设置方法
+- 创建文件夹
+shell
+$ sudo mkdir -p /etc/systemd/system/docker.service.d
+- 新建配置文件
+shell
+$ sudo vim /etc/systemd/system/docker.service.d/http-proxy.conf
+填入代理配置：
+toml
+[Service]
+Environment=&amp;quot;HTTP_PROXY=http://127.0.0.1:7890&amp;quot;
+Environment=&amp;quot;HTTPS_PROXY=http://127.0.0.1:7890&amp;quot;
+Environment=&amp;quot;NO_PROXY=your-registry.com,10.10.10.10,*.example.com&amp;quot;
+&amp;gt; 如果你自己建了私有的镜像仓库，需要 dockerd 绕过代理服务器直连，那么配置 NO_PROXY 变量，多个 NO_PROXY 变量的值用逗号分隔，而且可以使用通配符（*），极端情况下，如果 NO_PROXY=*，那么所有请求都将不通过代理服务器。如果不需要可以直接不设置这个变量
+- 重启服务
+shell
+$ sudo systemctl daemon-reload
+$ sudo systemctl restart docker
+- 检查配置
+shell
+$ sudo systemctl show --property=Environment docker
+[sudo] password for zheng:
+Environment=HTTP_PROXY=http://127.0.0.1:7890 HTTPS_PROXY=http://127.0.0.1:7890
+设置成功🎉</description></item><item><title>Nginx Process Model</title><link>https://blog.greycode.top/issues-blog/posts/12/</link><pubDate>Fri, 17 Mar 2023 14:58:24 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/12/</guid><description>Introduction
+Nginx adopts a unique master and multi workers process pool mechanism, which guarantees stable operation and flexible configuration of Nginx.
+Usually, Nginx will start a master process and multiple worker processes to provide external services. The master process, known as the monitoring process, did not handle specific TCP/HTTP requests and received only the Unix signal.
+Worker processes compete equally for accepting client connections, executing the main business logic of Nginx, and Using epoll, kqueue, and other mechanisms to process TCP/HTTP requests efficiently.</description></item><item><title>OpenResty 安装入门教程</title><link>https://blog.greycode.top/issues-blog/posts/8/</link><pubDate>Fri, 17 Mar 2023 14:58:24 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/8/</guid><description>## 方法1: [推荐] 源码编译安装
+去下载页面下载源码包,然后执行下面的命令进行解压,编译和安装
+shell
+tar -xvf openresty-VERSION.tar.gz
+cd openresty-VERSION/
+./configure -j2
+make -j2
+sudo make install
+# better also add the following line to your ~/.bashrc or ~/.bash_profile file.
+export PATH=/usr/local/openresty/bin:$PATH
+## 方法2: 在 ArchLinux 安装
+在官方预编译包列表中，没有编译 ArchLinux 的包，所以我们可以直接使用 yay 包管理器来安装，可以看AUR地址
+首先要在电脑上安装 yay 包管理器，然后执行下面的命令进行安装：
+shell
+yay -S openresty
+等命令执行完，按提示在你的环境变量文件中添加 OpenResty 的安装路径，就添加下面这一行到你的环境变量配置文件中
+shell
+export PATH=/opt/openresty/bin:$PATH
+然后激活一下环境变量，就安装成功了
+## OpenResty 命令介绍
+shell
+╰─$ sudo openresty -h
+[sudo] password for zheng:
+nginx version: openresty/1.</description></item><item><title>Raft 共识算法</title><link>https://blog.greycode.top/issues-blog/posts/10/</link><pubDate>Fri, 17 Mar 2023 14:58:24 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/10/</guid><description>null</description></item><item><title>vite 项目配置跨域代理</title><link>https://blog.greycode.top/issues-blog/posts/13/</link><pubDate>Fri, 17 Mar 2023 14:58:24 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/13/</guid><description>在 vite.config.ts 文件下添加如下配置
+ts
+server: {
+cors: true, // 默认启用并允许任何源
+proxy: {
+'/api': {
+target: 'http://192.168.1.2:8001/',
+changeOrigin: true,
+rewrite: (path) =&amp;gt; path.replace(/^\/api/, '')
+},
+}
+}
+文件全文：
+ts
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+// https://vitejs.dev/config/
+export default defineConfig({
+plugins: [react()],
+server: {
+cors: true, // 默认启用并允许任何源
+proxy: {
+'/api': {
+target: 'http://192.168.1.2:8001/',
+changeOrigin: true,
+rewrite: (path) =&amp;gt; path.replace(/^\/api/, '')
+},
+}
+}
+})</description></item><item><title>什么是 FFI ？</title><link>https://blog.greycode.top/issues-blog/posts/9/</link><pubDate>Fri, 17 Mar 2023 14:58:24 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/9/</guid><description>null</description></item><item><title>使用 http_load 对 http 服务进行压测</title><link>https://blog.greycode.top/issues-blog/posts/5/</link><pubDate>Fri, 17 Mar 2023 14:58:24 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/5/</guid><description>安装
+shell
+# macOS
+brew install http_load
+或则直接去 http://www.acme.com/software/http_load/ 下载
+## 使用
+现定一个文本文件，里面放上要压测 url
+urls.txt
+txt
+http://localhost:8888/hello
+执行命令
+shell
+http_load -p 50 -s 5 urls.txt
+-p 50 命令表示50个连接进程，-s 5 表示持续 5 秒
+结果：
+shell
+16284 fetches, 50 max parallel, 179124 bytes, in 5.00497 seconds
+11 mean bytes/connection
+3253.56 fetches/sec, 35789.2 bytes/sec
+msecs/connect: 2.44797 mean, 862.047 max, 0.098 min
+msecs/first-response: 2.30903 mean, 861.732 max, 0.116 min
+HTTP response codes:</description></item><item><title>小米(umi)使用 fastboot 刷机</title><link>https://blog.greycode.top/issues-blog/posts/6/</link><pubDate>Fri, 17 Mar 2023 14:58:24 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/6/</guid><description>执行过程
+直接在终端命令行使用 fastboot 命令进行刷机(手机需先申请解锁)
+1. 在设置中打开 USB 调试，然后连接电脑
+2. 执行命令 adb reboot bootloader 进入fastboot 模式
+3. 下载 MIUI 线刷包，解压后，执行 flash_all.sh 命令
+4. 等待刷机完成</description></item><item><title>小米(umi)刷入 Magisk</title><link>https://blog.greycode.top/issues-blog/posts/7/</link><pubDate>Fri, 17 Mar 2023 14:58:24 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/7/</guid><description>首先要确定当前手机的ROM版本，然后下载对应的线刷包
+解压线刷包，然后进入解压后的文件夹里，上上传 images 文件夹下的 boot.img 文件到手机
+可以直接使用 adb 命令上传
+shell
+adb push boot.img /storage/self/primary
+然后到 Magisk Release 下载最新版本APP，上传到手机安装
+手机进入 Magisk App，点击第一个 Magisk 模块上的安装（不要勾选 vbmeat相关选项），点击选择一个补丁，选择刚才上传的 boot.img 文件。
+此时会执行编译，然后记下App界面上出现保存编译后的文件地址，执行命令保存到电脑上
+shell
+adb pull /storage/emulated/0/Download/magisk_patched-25200_UpxP7.img
+电脑执行命令，手机进入 fastboot 模式
+shell
+adb reboot bootloader
+然后刷入刚才的文件
+shell
+fastboot flash boot magisk_patched-25200_UpxP7.img
+刷入完成后就可以重启手机了
+complete!</description></item><item><title>coc.nvim 插件安装</title><link>https://blog.greycode.top/issues-blog/posts/17/</link><pubDate>Fri, 17 Mar 2023 14:58:23 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/17/</guid><description>简介
+开源地址：coc.nvim
+能够在 neovim 中编写代码时，像IDE一样弹出代码提升并可以自动补全
+## 环境要求
+- neovim &amp;gt;= 0.4.0.
+- nodejs &amp;gt;= 14.14
+## 安装插件
+使用 Packer 安装 coc.nvim 插件，只要在~/.config/nvim/lua/plugins.lua文件中添加如下配置
+lua
+use {'neoclide/coc.nvim', branch = 'release'}
+full content of ~/.config/nvim/lua/plugins.lua
+lua
+vim.cmd [[packadd packer.nvim]]
+return require('packer').startup(function()
+-- Packer can manage itself
+use 'wbthomason/packer.nvim'
+-- 添加 coc.vim 插件
+use {'neoclide/coc.nvim', branch = 'release'}
+end)
+然后执行命令,等待安装完成✅
+shell
+nvim +PackerSync
+## 配置 coc.nvim 插件
+完成安装后，只是能够简单的提示，这里还需要安装 languageServer，这里以安装 Go 语言提示为例
+&amp;gt; more Language Server
+在 nvim 界面中，执行如下命令
+shell
+:CocInstall coc-go
+看到绿色小勾就说明安装成功了
+然后在 nvim 界面中，输入如下命令，进入 coc.</description></item><item><title>coc.nvim 配置 Rust 代码提醒补全</title><link>https://blog.greycode.top/issues-blog/posts/18/</link><pubDate>Fri, 17 Mar 2023 14:58:23 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/18/</guid><description> 安装 coc-rust-analyzer
+2. 安装 rust-analyzer
+shell
+$ git clone https://github.com/rust-lang/rust-analyzer.git &amp;amp;&amp;amp; cd rust-analyzer
+$ cargo xtask install --server
+3. 配置 coc-setting.conf
+json
+{
+&amp;quot;languageserver&amp;quot;: {
+&amp;quot;golang&amp;quot;: {
+&amp;quot;command&amp;quot;: &amp;quot;gopls&amp;quot;,
+&amp;quot;rootPatterns&amp;quot;: [&amp;quot;go.mod&amp;quot;],
+&amp;quot;filetypes&amp;quot;: [&amp;quot;go&amp;quot;]
+},
+&amp;quot;rust&amp;quot;: {
+&amp;quot;command&amp;quot;: &amp;quot;rust-analyzer&amp;quot;,
+&amp;quot;filetypes&amp;quot;: [&amp;quot;rust&amp;quot;],
+&amp;quot;rootPatterns&amp;quot;: [&amp;quot;Cargo.toml&amp;quot;]
+}
+},
+&amp;quot;rust-analyzer.serverPath&amp;quot;: &amp;quot;~/.cargo/bin/rust-analyzer&amp;quot;
+}
+rust-analyzer.serverPath 配置成 rust-analyzer 安装的路径</description></item><item><title>Docker 构建镜像时设置网络代理</title><link>https://blog.greycode.top/issues-blog/posts/21/</link><pubDate>Fri, 17 Mar 2023 14:58:23 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/21/</guid><description>构建镜像时，需要连接网络下载外网数据时，这时候就需要设置网络代理
+1. 首先开启你的代理软件，获取代理软件的监听地址。例如我用的是 Clash，它的监听地址是 http://127.0.0.1:7890
+2. 在执行 docker build 命令构建时，添加 --build-arg 参数
+例如：
+bash
+--build-arg HTTP_PROXY=http://127.0.0.1:1080
+3. 完整命令
+bash
+docker build \
+--network host \
+--build-arg HTTP_PROXY=http://127.0.0.1:7890 --build-arg HTTPS_PROXY=http://127.0.0.1:7890 \
+-t xxx:1.0 .</description></item><item><title>lldb 添加 python 脚本</title><link>https://blog.greycode.top/issues-blog/posts/22/</link><pubDate>Fri, 17 Mar 2023 14:58:23 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/22/</guid><description>新键一个 python 脚本 ~/htlloworld.py
+输入如下内容：
+py
+def helloworld(debugger, command, result, internal_dict):
+print(&amp;quot;hello world!&amp;quot;)
+## lldb 手动导入 python 脚本
+bash
+$ lldb
+(lldb) command script import ~/helloworld.py
+(lldb) command script add -f helloworld.helloworld hello
+(lldb) hello
+hello world!
+## lldb 自动导入 pyhon 脚本
+在 ~/htlloworld.py 添加如下内容
+py
+def __lldb_init_module(debugger, internal_dict):
+debugger.HandleCommand('command script add -f helloworld.helloworld hello')
+然后在 ~/.lldbinit 文件（如果没这个文件就创建一个）里添加如下内容:
+init
+command script import /Users/zheng/coding/test/helloworld.py
+这样打开 lldb 直接输入 hello 命令就可以执行这个脚本了</description></item><item><title>neovim 命令速记</title><link>https://blog.greycode.top/issues-blog/posts/20/</link><pubDate>Fri, 17 Mar 2023 14:58:23 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/20/</guid><description>更多可以查看vim文档
+窗口大小设置
+- :vertical resize +10 窗口垂直宽度加10
+- :vertical resize -10 窗口垂直宽度减10
+- :horizontal resize +10 窗口水平宽度加10
+- :horizontal resize -10 窗口水平宽度减10
+打开终端
+- :bel split | terminal or :belowright split | terminal 在窗口上分割一个窗口来打开新终端</description></item><item><title>neovim 和 packer 包管理器安装</title><link>https://blog.greycode.top/issues-blog/posts/16/</link><pubDate>Fri, 17 Mar 2023 14:58:23 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/16/</guid><description>安装 neovim
+- ArchLinux shell
+sudo pacman -S neovim
+更多安装方式查看官方安装文档
+## 安装 packer 包管理器
+我们可以使用 packer 来管理 neovim 的插件
+- Unix/Linux 系统下安装(需要先安装git，如有直接执行下面命令)
+shell
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+~/.local/share/nvim/site/pack/packer/start/packer.nvim
+- Windows PowerShell 下安装
+```shell
+git clone https://github.com/wbthomason/packer.nvim &amp;ldquo;$env:LOCALAPPDATA vim-data\site\pack\packer\start\packer.nvim&amp;rdquo;
+## 配置 packer 包管理器
+安装后，我们需要新建文件`~/.config/nvim/init.vim`
+&amp;gt; 这是 neovim 配置文件
+shell
+mkdir -p ~/.config/nvim &amp;amp;&amp;amp; touch ~/.config/nvim/init.vim
+然后再新建一个文件`~/.config/nvim/lua/plugins.lua`
+&amp;gt; 这是packer管理插件的配置
+shell
+mkdir -p ~/.config/nvim/lua &amp;amp;&amp;amp; touch ~/.config/nvim/lua/plugins.lua
+然后编辑`~/.config/nvim/init.vim`配置，填入如下内容
+lua
+lua require(&amp;lsquo;plugins&amp;rsquo;)
+编辑`~/.config/nvim/lua/plugins.lua`，填入如下内容
+lua
+vim.</description></item><item><title>neovim 配置 nvim-tree 文件树</title><link>https://blog.greycode.top/issues-blog/posts/19/</link><pubDate>Fri, 17 Mar 2023 14:58:23 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/19/</guid><description>安装
+首先要先安装 nvim-tree.lua 和 nvim-web-devicons
+老规矩,在 Packer 的配置里添加这两个的配置,一般文件路径在 ~/.config/nvim/lua/plugins.lua
+lua
+use {
+'nvim-tree/nvim-tree.lua',
+requires = {
+'nvim-tree/nvim-web-devicons', -- optional, for file icons
+},
+tag = 'nightly' -- optional, updated every week. (see issue #1193)
+}
+然后保存,并执行命令进行安装
+shell
+$ nvim +PackerInstall
+## 配置 nvim-tree
+安装完成后,还要添加下 nvim-tree 的初始化配置文件
+新建文件夹和文件
+shell
+$ mkdir -p ~/.config/nvim/lua/plugin-config &amp;amp;&amp;amp; touch ~/.config/nvim/lua/plugin-config/nvim-tree.lua
+在文件 ~/.config/nvim/lua/plugin-config/nvim-tree.lua 里填入如下配置
+lua
+-- examples for your init.lua
+-- disable netrw at the very start of your init.</description></item><item><title>oci-go-sdk 配置文件创建流程</title><link>https://blog.greycode.top/issues-blog/posts/24/</link><pubDate>Fri, 17 Mar 2023 14:58:23 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/24/</guid><description>创建用户
+- 首先在用户页面中创建一个 IAM 用户
+- 然后创建一个组，把刚才创建的用户加进来
+- 创建组的策略
+### 对象存储用到的策略
+- 写入权限
+- 下载权限
+- 预验证请求要用到的管理权限
+## 创建 API KEY
+1. 在用户页面中，点击刚才创建的用户，进入这个用户的 profile
+2. 点击 API 密钥
+3. 点击 添加 API 密钥
+4. 然后选择生成 API 密钥对
+5. 下载私钥并保持到本地
+6. 点击添加后，将文本框的内容粘贴到 ~/.oci/config 文件中。
+7. 修改 ~/.oci/config 中 key_file 字段的值为你刚才保持私钥的路径
+这样就可以使用 oci-go-sdk 了</description></item><item><title>VSCode 设置 markdown snippets</title><link>https://blog.greycode.top/issues-blog/posts/23/</link><pubDate>Fri, 17 Mar 2023 14:58:23 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/23/</guid><description>设置 Snippets
+1. 在 VSCode 界面按快捷键 Ctrl+Shift+P 打开命令输入框
+2. 在输入框中输入 Snippets, 并选择 Snippets: Configure User Snippets
+3. 在 Snippets 命令搜索框中输入 markdown, 打开 markdown snippets 配置
+4. 在 markdown,json 中输入你要的快捷补虫的文本片段, 比如我这边设置快捷注音 ruby 片段
+json
+{
+&amp;quot;Ruby of words&amp;quot;: {
+&amp;quot;prefix&amp;quot;: &amp;quot;ruby&amp;quot;,
+&amp;quot;body&amp;quot;: [
+&amp;quot;&amp;lt;ruby&amp;gt;$1&amp;lt;rt&amp;gt;$2&amp;lt;/rt&amp;gt;&amp;lt;/ruby&amp;gt;&amp;quot;
+],
+&amp;quot;description&amp;quot;: &amp;quot;Ruby of words&amp;quot;
+},
+}
+## 开启 markdown 代码片段补充
+设置了 snippets 后，markdown 还是不能使用快捷补充功能的，还需要在 settings.json 中配置一下
+还是使用 Ctrl+Shift+P 打开命令输入框，输入 settings ，选择 Prefernces: Open User Settings
+在 json 配置中添加如下配置
+json
+&amp;quot;[markdown]&amp;quot;: {
+&amp;quot;editor.</description></item><item><title>电脑安装 anaconda 后，激活环境导致 zsh 主题失效解决方法</title><link>https://blog.greycode.top/issues-blog/posts/14/</link><pubDate>Fri, 17 Mar 2023 14:58:23 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/14/</guid><description>原因
+系统: ArchLinux
+终端shell: zsh
+在安装 anaconda 后，激活环境后，zsh终端的主题就会失效
+shell
+╭─zheng@zhengArch ~
+╰─$ conda activate base
+(base)
+终端只剩下 conda 的环境名，当我退出 conda 环境是，zsh 主题还是不能恢复，必须重启终端才可以
+退出环境：
+shell
+╭─zheng@zhengArch ~
+╰─$ conda activate base
+(base) conda deactivate
+pwd
+/home/zheng
+## 解决方法
+执行如下命令可以解决
+shell
+conda config --set changeps1 False
+参考资料:
+- conda.io
+- stackoverflow
+&amp;mdash;
+## 美化 oh-my-zsh 主题
+可以在 oh-my-zsh 主题配置文件里使用如下函数来获取当前 conda 环境名
+lua
+# Conda info
+local conda_info='$(conda_prompt_info)'
+conda_prompt_info() {
+if [ -n &amp;quot;$CONDA_DEFAULT_ENV&amp;quot; ]; then
+echo -n &amp;quot;($CONDA_DEFAULT_ENV) &amp;quot;
+else
+echo -n &amp;quot;&amp;quot;
+fi
+}
+bira.</description></item><item><title>高性能网关基石——OpenResty</title><link>https://blog.greycode.top/issues-blog/posts/15/</link><pubDate>Fri, 17 Mar 2023 14:58:23 +0800</pubDate><guid>https://blog.greycode.top/issues-blog/posts/15/</guid><description>什么是 OpenResty
+OpenResty 一个基于 Nginx 的高性能 Web 平台，能够方便地搭建处理超高并发的动态 Web 应用、
+Web 服务和动态网关。例如有名的 Kong 网关和国产新秀 ApiSIX 网关都是基于 OpenResty 来进行打造的。
+OpenResty 通过实现 ngx_lua 和 stream_lua 等 Nginx 模块，把 Lua/LuaJIT 完美地整合进了 Nginx，从而让我们能够在 Nginx 内部里嵌入 Lua 脚本，用 Lua 语言来实现复杂的 HTTP/TCP/UDP 业务逻辑，同时依然保持着高度的并发服务能力。
+## 处理阶段
+一个正常的 Web 服务的生命周期可以分成三个阶段：
+1. initing：服务启动，读取配置文件，初始化内部数据结构
+2. running：服务运行，接受客户端的请求，返回响应结果
+3. exiting：服务停止，做一些必要的清理工作，如关闭监听端口
+OpenResty 主要关注的是 initing 和 running 这两个阶段，并做了更细致的划分
+### OpenResty 的 initing 阶段
+- configuration：读取配置文件，解析配置指令，设置运行参数
+- master-initing：配置文件解析完毕，master 进程初始化公用的数据
+- worker-initing：worker 进程初始化自己专用的数据
+### OpenResty 的 running 阶段
+在 running 阶段，收到客户端的请求后，OpenResty 对每个请求都会使用下面这条流水线进行处理：
+1.</description></item></channel></rss>

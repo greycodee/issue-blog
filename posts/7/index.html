@@ -1,0 +1,18 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="首先要确定当前手机的ROM版本，然后下载对应的线刷包解压线刷包，然后进入解压后的文件夹里，上上传 images 文件夹下的 boot.img 文件到手机可以直接使用 adb 命令上传shelladb push boot.img /storage/self/primary然后到 Magisk Release 下载最新版本APP，上传到手机安装手机进入 Magisk App，点击第一个 Magisk 模块上的安装（不要勾选 vbmeat相关选项），点击选择一个补丁，选择刚才上传的 boot.img 文件。此时会执行编译，然后记下App界面上出现保存编译后的文件地址，执行命令保存到电脑上shelladb pull /storage/emulated/0/Download/magisk_patched-25200_UpxP7.img电脑执行命令，手机进入 fastboot 模式shelladb reboot bootloader然后刷入刚才的文件shellfastboot flash boot magisk_patched-25200_UpxP7.img刷入完成后就可以重启手机了complete!"><title>小米(umi)刷入 Magisk</title><link rel="shortcut icon" type=image/x-icon href=/issues-blog/><link rel=stylesheet href=/issues-blog/css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css integrity="sha512-6+FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ=="></head><body a=auto><main class=page-content aria-label=Content><div class=w><a href=/>..</a><article><p class=post-meta><time datetime="2023-03-17 14:58:24 +0800 +0800">2023-03-17</time></p><h1>小米(umi)刷入 Magisk</h1><p><strong>首先要确定当前手机的ROM版本，然后下载对应的线刷包</strong>
+解压线刷包，然后进入解压后的文件夹里，上上传 <code>images</code> 文件夹下的 <code>boot.img</code> 文件到手机
+可以直接使用 adb 命令上传
+<code>shell
+adb push boot.img /storage/self/primary</code>
+然后到 <a href=https://github.com/topjohnwu/Magisk/releases>Magisk Release</a> 下载最新版本APP，上传到手机安装
+手机进入 Magisk App，点击第一个 Magisk 模块上的安装（不要勾选 vbmeat相关选项），点击选择一个补丁，选择刚才上传的 <code>boot.img</code> 文件。
+此时会执行编译，然后记下App界面上出现保存编译后的文件地址，执行命令保存到电脑上
+<code>shell
+adb pull /storage/emulated/0/Download/magisk_patched-25200_UpxP7.img</code>
+电脑执行命令，手机进入 fastboot 模式
+<code>shell
+adb reboot bootloader</code>
+然后刷入刚才的文件
+<code>shell
+fastboot flash boot magisk_patched-25200_UpxP7.img</code>
+刷入完成后就可以重启手机了
+complete!</p></article></div></main></body></html>

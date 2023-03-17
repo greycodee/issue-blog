@@ -1,0 +1,72 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="原因系统: ArchLinux终端shell: zsh在安装 anaconda 后，激活环境后，zsh终端的主题就会失效shell╭─zheng@zhengArch ~╰─$ conda activate base(base)终端只剩下 conda 的环境名，当我退出 conda 环境是，zsh 主题还是不能恢复，必须重启终端才可以退出环境：shell╭─zheng@zhengArch ~╰─$ conda activate base(base) conda deactivatepwd/home/zheng## 解决方法执行如下命令可以解决shellconda config --set changeps1 False参考资料:- conda.io- stackoverflow&mdash;## 美化 oh-my-zsh 主题可以在 oh-my-zsh 主题配置文件里使用如下函数来获取当前 conda 环境名lua# Conda infolocal conda_info='$(conda_prompt_info)'conda_prompt_info() {if [ -n &#34;$CONDA_DEFAULT_ENV&#34; ]; thenecho -n &#34;($CONDA_DEFAULT_ENV) &#34;elseecho -n &#34;&#34;fi}bira."><title>电脑安装 anaconda 后，激活环境导致 zsh 主题失效解决方法</title><link rel="shortcut icon" type=image/x-icon href=/issues-blog/><link rel=stylesheet href=/issues-blog/css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css integrity="sha512-6+FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ=="></head><body a=auto><main class=page-content aria-label=Content><div class=w><a href=/>..</a><article><p class=post-meta><time datetime="2023-03-17 14:58:23 +0800 +0800">2023-03-17</time></p><h1>电脑安装 anaconda 后，激活环境导致 zsh 主题失效解决方法</h1><h2 id=原因-系统-archlinux-终端shell-zsh-在安装-anaconda-后激活环境后zsh终端的主题就会失效-shell-zhengzhengarch---conda-activate-base-base--终端只剩下-conda-的环境名当我退出-conda-环境是zsh-主题还是不能恢复必须重启终端才可以-退出环境-shell-zhengzhengarch---conda-activate-base-base-conda-deactivate-pwd-homezheng----解决方法-执行如下命令可以解决-shell-conda-config---set-changeps1-false---参考资料---condaiohttpscondaioprojectscondaenlatestuser-guideconfigurationuse-condarchtmlchange-command-prompt-changeps1---stackoverflowhttpsstackoverflowcomquestions42481726how-to-modify-conda-source-activate-ps1-behavior--------美化-oh-my-zsh-主题-可以在-oh-my-zsh-主题配置文件里使用如下函数来获取当前-conda-环境名-lua--conda-info-local-conda_infoconda_prompt_info-conda_prompt_info--if---n-conda_default_env--then-echo--n-conda_default_env--else-echo--n--fi---birazsh-theme-主题文件全貌-lua-local-return_codefgred-reset_color-local-user_hostbfgredfggreennmreset_color--local-user_symbol-local-current_dirbfgblue-reset_color--local-vcs_branchgit_prompt_infohg_prompt_info-local-rvm_rubyruby_prompt_info-local-venv_promptvirtualenv_prompt_info--zsh_theme_rvm_prompt_optionsi-v-g----conda-info-local-conda_infoconda_prompt_info-conda_prompt_info--if---n-conda_default_env--then-echo--n-conda_default_env--else-echo--n--fi----promptuser_hostconda_infocurrent_dirrvm_rubyvcs_branchvenv_prompt-buser_symbolb--rpromptbreturn_codeb--zsh_theme_git_prompt_prefixfgyellow-zsh_theme_git_prompt_suffix-reset_color-zsh_theme_git_prompt_dirtyfgredfgyellow-zsh_theme_git_prompt_cleanfgyellow--zsh_theme_hg_prompt_prefixzsh_theme_git_prompt_prefix-zsh_theme_hg_prompt_suffixzsh_theme_git_prompt_suffix-zsh_theme_hg_prompt_dirtyzsh_theme_git_prompt_dirty-zsh_theme_hg_prompt_cleanzsh_theme_git_prompt_clean--zsh_theme_ruby_prompt_prefixfgred-zsh_theme_ruby_prompt_suffix-reset_color--zsh_theme_virtual_env_prompt_prefixfggreen-zsh_theme_virtual_env_prompt_suffix-reset_color-zsh_theme_virtualenv_prefixzsh_theme_virtual_env_prompt_prefix-zsh_theme_virtualenv_suffixzsh_theme_virtual_env_prompt_suffix->原因
+系统: ArchLinux
+终端shell: zsh
+在安装 anaconda 后，激活环境后，zsh终端的主题就会失效
+<code>shell
+╭─zheng@zhengArch ~
+╰─$ conda activate base
+(base)</code>
+终端只剩下 conda 的环境名，当我退出 conda 环境是，zsh 主题还是不能恢复，必须重启终端才可以
+退出环境：
+<code>shell
+╭─zheng@zhengArch ~
+╰─$ conda activate base
+(base) conda deactivate
+pwd
+/home/zheng</code>
+## 解决方法
+执行如下命令可以解决
+<code>shell
+conda config --set changeps1 False</code>
+参考资料:
+- <a href=https://conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html#change-command-prompt-changeps1>conda.io</a>
+- <a href=https://stackoverflow.com/questions/42481726/how-to-modify-conda-source-activate-ps1-behavior>stackoverflow</a>
+&mdash;
+## 美化 oh-my-zsh 主题
+可以在 oh-my-zsh 主题配置文件里使用如下函数来获取当前 conda 环境名
+<code>lua
+# Conda info
+local conda_info='$(conda_prompt_info)'
+conda_prompt_info() {
+if [ -n "$CONDA_DEFAULT_ENV" ]; then
+echo -n "($CONDA_DEFAULT_ENV) "
+else
+echo -n ""
+fi
+}</code>
+<strong>bira.zsh-theme 主题文件全貌</strong>:
+<code>lua
+local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
+local user_host="%B%(!.%{$fg[red]%}.%{$fg[green]%})%n@%m%{$reset_color%} "
+local user_symbol='%(!.#.$)'
+local current_dir="%B%{$fg[blue]%}%~ %{$reset_color%}"
+local vcs_branch='$(git_prompt_info)$(hg_prompt_info)'
+local rvm_ruby='$(ruby_prompt_info)'
+local venv_prompt='$(virtualenv_prompt_info)'
+ZSH_THEME_RVM_PROMPT_OPTIONS="i v g"
+# Conda info
+local conda_info='$(conda_prompt_info)'
+conda_prompt_info() {
+if [ -n "$CONDA_DEFAULT_ENV" ]; then
+echo -n "($CONDA_DEFAULT_ENV) "
+else
+echo -n ""
+fi
+}
+PROMPT="╭─${user_host}${conda_info}${current_dir}${rvm_ruby}${vcs_branch}${venv_prompt}
+╰─%B${user_symbol}%b "
+RPROMPT="%B${return_code}%b"
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}‹"
+ZSH_THEME_GIT_PROMPT_SUFFIX="› %{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}●%{$fg[yellow]%}"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[yellow]%}"
+ZSH_THEME_HG_PROMPT_PREFIX="$ZSH_THEME_GIT_PROMPT_PREFIX"
+ZSH_THEME_HG_PROMPT_SUFFIX="$ZSH_THEME_GIT_PROMPT_SUFFIX"
+ZSH_THEME_HG_PROMPT_DIRTY="$ZSH_THEME_GIT_PROMPT_DIRTY"
+ZSH_THEME_HG_PROMPT_CLEAN="$ZSH_THEME_GIT_PROMPT_CLEAN"
+ZSH_THEME_RUBY_PROMPT_PREFIX="%{$fg[red]%}‹"
+ZSH_THEME_RUBY_PROMPT_SUFFIX="› %{$reset_color%}"
+ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX="%{$fg[green]%}‹"
+ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX="› %{$reset_color%}"
+ZSH_THEME_VIRTUALENV_PREFIX="$ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX"
+ZSH_THEME_VIRTUALENV_SUFFIX="$ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX"</code></h2></article></div></main></body></html>

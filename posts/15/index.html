@@ -1,0 +1,118 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="什么是 OpenRestyOpenResty 一个基于 Nginx 的高性能 Web 平台，能够方便地搭建处理超高并发的动态 Web 应用、Web 服务和动态网关。例如有名的 Kong 网关和国产新秀 ApiSIX 网关都是基于 OpenResty 来进行打造的。OpenResty 通过实现 ngx_lua 和 stream_lua 等 Nginx 模块，把 Lua/LuaJIT 完美地整合进了 Nginx，从而让我们能够在 Nginx 内部里嵌入 Lua 脚本，用 Lua 语言来实现复杂的 HTTP/TCP/UDP 业务逻辑，同时依然保持着高度的并发服务能力。## 处理阶段一个正常的 Web 服务的生命周期可以分成三个阶段：1. initing：服务启动，读取配置文件，初始化内部数据结构2. running：服务运行，接受客户端的请求，返回响应结果3. exiting：服务停止，做一些必要的清理工作，如关闭监听端口OpenResty 主要关注的是 initing 和 running 这两个阶段，并做了更细致的划分### OpenResty 的 initing 阶段- configuration：读取配置文件，解析配置指令，设置运行参数- master-initing：配置文件解析完毕，master 进程初始化公用的数据- worker-initing：worker 进程初始化自己专用的数据### OpenResty 的 running 阶段在 running 阶段，收到客户端的请求后，OpenResty 对每个请求都会使用下面这条流水线进行处理：1."><title>高性能网关基石——OpenResty</title><link rel="shortcut icon" type=image/x-icon href=/issues-blog/><link rel=stylesheet href=/issues-blog/css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css integrity="sha512-6+FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ=="></head><body a=auto><main class=page-content aria-label=Content><div class=w><a href=/>..</a><article><p class=post-meta><time datetime="2023-03-17 14:58:23 +0800 +0800">2023-03-17</time></p><h1>高性能网关基石——OpenResty</h1><h2 id=什么是-openresty-openresty-一个基于-nginx-的高性能-web-平台能够方便地搭建处理超高并发的动态-web-应用-web-服务和动态网关例如有名的-kong-网关和国产新秀-apisix-网关都是基于-openresty-来进行打造的--openresty-通过实现-ngx_lua-和-stream_lua-等-nginx-模块把-lualuajit-完美地整合进了-nginx从而让我们能够在-nginx-内部里嵌入-lua-脚本用-lua-语言来实现复杂的-httptcpudp-业务逻辑同时依然保持着高度的并发服务能力---处理阶段-一个正常的-web-服务的生命周期可以分成三个阶段-1-initing服务启动读取配置文件初始化内部数据结构-2-running服务运行接受客户端的请求返回响应结果-3-exiting服务停止做一些必要的清理工作如关闭监听端口--openresty-主要关注的是-initing-和-running-这两个阶段并做了更细致的划分--openresty-的-initing-阶段---configuration读取配置文件解析配置指令设置运行参数---master-initing配置文件解析完毕master-进程初始化公用的数据---worker-initingworker-进程初始化自己专用的数据---openresty-的-running-阶段-在-running-阶段收到客户端的请求后openresty-对每个请求都会使用下面这条流水线进行处理-1-sslssltls-安全通信和验证-2-preread-在正式处理之前预读数据接收-http-请求头-3-rewrite检查改写-uri-实现跳转重定向-4-access访问权限控制-5-content产生响应内容-6-filter对-content-阶段产生的内容进行过滤加工处理-7-log-请求处理完毕记录日志或者其他的收尾工作--httpscdnjsdelivrnetghgreycodeeimagesmainpicgoopenresty-phasepng---openresty-执行程序-openresty-根据上面的处理阶段提供了一些指令在开发时使用它们就可以在这些阶段里面插入-lua-代码执行业务逻辑---init_by_lua_filemaster-initing-阶段初始化全局配置或模块---init_worker_by_lua_fileworker-initing-阶段初始化进程专用功能---ssl_certificate_by_lua_filessl-阶段在握手时设置安全证书---set_by_lua_filerewrite-阶段改写-nginx-变量---rewrite_by_lua_filerewrite-阶段改写-uri-实现跳转或重定向---access_by_lua_fileaccess-阶段访问控制或限速---content_by_lua_filecontent-阶段产生响应内容---balancer_by_lua_filecontent-阶段反向代理时选择后端服务器---header_filter_by_lua_filefilter-阶段加工处理响应头---body_filter_by_lua_filefilter-阶段加工处理响应体---log_by_lua_filelog-阶段记录日志或其他的收尾工作---这些指令通常有三种形式----xxx_by_lua执行字符串形式的-lua-代码----xxx_by_lua_block功能相同但指令后是-的-lua-代码块----xxx_by_lua_file功能相同但执行磁盘上的-lua-源码文件--这边推荐使用-xxx_by_lua_file它彻底分离了配置文件与业务代码让两者可以独立部署而且文件形式也让我们更容易以模块的方式管理组织-lua-程序--下面是-openresty-指令所在的阶段和执行的先后顺序图-httpscdnjsdelivrnetghgreycodeeimagesmainpicgoopenrestyflowpng----demo-编写--为了能够直观的看到上面的处理阶段接下来编写一个-openresty-的-小-demo-先在本地电脑上安装-openresty-然后执行下面命令看看有没有安装成功如果安装成功了就会出现版本号-shell--sudo-openresty--v-nginx-version-openresty12141--然后执行下面命令创建一些文件夹-shell-mkdir-testresty---cd-testresty---mkdir-logs-conf-service---cd-logs--touch-errorlog--touch-accesslog--创建完成后文件目录结构就像下面这样-shell--conf--logs---accesslog---errorlog--service--其中-configtoml-文件夹是存放-nginxconf-等配置的地方然后自己编写的-lua-代码文件可以放在-service-文件夹下-接下来创建和编写每个阶段所需的-lua-脚本文件-只在里面编写一条打印日志的代码-然后放进-service-文件夹下---rewritelua-lua-ngxlogngxalertthis-is-rewrite----accesslua-lua-ngxlogngxalertthis-is-access-----contentlua-lua-ngxlogngxalertthis-is-content----响应内容-ngxsayhello-world-----header_filterlua-lua-ngxlogngxalertthis-is-header_filter-----body_filterlua-lua-ngxlogngxalertthis-is-body_filter-----loglua-lua-ngxlogngxalertthis-is-log---编写-nginxconf-配置文件-放进-configtoml-文件夹下-conf-user-root--worker_processes-1-events--worker_connections-512---http--server--listen-80--location---rewrite_by_lua_file-servicerewritelua-access_by_lua_file-serviceaccesslua-content_by_lua_file-servicecontentlua-header_filter_by_lua_file-serviceheader_filterlua-body_filter_by_lua_file-servicebody_filterlua-log_by_lua_file-serviceloglua------然后启动-openresty-使用--p-选项-传入你上面创建的文件夹地址-shell--sudo-openresty--p-hometestresty--启动完成后-然后用浏览器访问-httplocalhost-可以看到上面通过-ngxsayhello-world-的响应内容设置返回的-hello-world-打开-logserrorlog-文件可以看到-lua-代码里打印的日志-shell-20221226-155926-alert-317000-119-lua-rewritelua1-this-is-rewrite-client-127001-server--request-get--http11-host-localhost-20221226-155926-alert-317000-119-lua-accesslua1-this-is-access-client-127001-server--request-get--http11-host-localhost-20221226-155926-alert-317000-119-lua-contentlua1-this-is-content-client-127001-server--request-get--http11-host-localhost-20221226-155926-alert-317000-119-lua-header_filterlua1-this-is-header_filter-client-127001-server--request-get--http11-host-localhost-20221226-155926-alert-317000-119-lua-body_filterlua1-this-is-body_filter-client-127001-server--request-get--http11-host-localhost-20221226-155926-alert-317000-119-lua-body_filterlua1-this-is-body_filter-client-127001-server--request-get--http11-host-localhost-20221226-155926-alert-317000-119-lua-loglua1-this-is-log-while-logging-request-client-127001-server--request-get--http11-host-localhost--通过日志可以观察到每个阶段的执行顺序是怎样的>什么是 OpenResty
+OpenResty 一个基于 Nginx 的高性能 Web 平台，能够方便地搭建处理超高并发的动态 Web 应用、
+Web 服务和动态网关。例如有名的 Kong 网关和国产新秀 ApiSIX 网关都是基于 OpenResty 来进行打造的。
+OpenResty 通过实现 <code>ngx_lua</code> 和 <code>stream_lua</code> 等 Nginx 模块，把 Lua/LuaJIT 完美地整合进了 Nginx，从而让我们能够在 Nginx 内部里嵌入 Lua 脚本，用 Lua 语言来实现复杂的 HTTP/TCP/UDP 业务逻辑，同时依然保持着高度的并发服务能力。
+## 处理阶段
+一个正常的 Web 服务的生命周期可以分成三个阶段：
+1. <strong>initing</strong>：服务启动，读取配置文件，初始化内部数据结构
+2. <strong>running</strong>：服务运行，接受客户端的请求，返回响应结果
+3. <strong>exiting</strong>：服务停止，做一些必要的清理工作，如关闭监听端口
+OpenResty 主要关注的是 <strong>initing</strong> 和 <strong>running</strong> 这两个阶段，并做了更细致的划分
+### OpenResty 的 initing 阶段
+- <strong>configuration</strong>：读取配置文件，解析配置指令，设置运行参数
+- <strong>master-initing</strong>：配置文件解析完毕，master 进程初始化公用的数据
+- <strong>worker-initing</strong>：worker 进程初始化自己专用的数据
+### OpenResty 的 running 阶段
+在 running 阶段，收到客户端的请求后，OpenResty 对每个请求都会使用下面这条流水线进行处理：
+1. <strong>ssl</strong>：SSL/TLS 安全通信和验证
+2. <strong>preread</strong>： 在正式处理之前<strong>预读</strong>数据，接收 HTTP 请求头
+3. <strong>rewrite</strong>：检查、改写 URI ，实现跳转重定向
+4. <strong>access</strong>：访问权限控制
+5. <strong>content</strong>：产生响应内容
+6. <strong>filter</strong>：对 content 阶段产生的内容进行过滤加工处理
+7. <strong>log</strong>： 请求处理完毕，记录日志，或者其他的收尾工作。
+<img src=https://cdn.jsdelivr.net/gh/greycodee/images@main/picgo/openresty-phase.png alt>
+## OpenResty 执行程序
+OpenResty 根据上面的处理阶段提供了一些指令，在开发时使用它们就可以在这些阶段里面插入 Lua 代码，执行业务逻辑：
+- <strong>init_by_lua_file</strong>：master-initing 阶段，初始化全局配置或模块
+- <strong>init_worker_by_lua_file</strong>：worker-initing 阶段，初始化进程专用功能
+- <strong>ssl_certificate_by_lua_file</strong>：ssl 阶段，在握手时设置安全证书
+- <strong>set_by_lua_file</strong>：rewrite 阶段，改写 Nginx 变量
+- <strong>rewrite_by_lua_file</strong>：rewrite 阶段，改写 URI ，实现跳转或重定向
+- <strong>access_by_lua_file</strong>：access 阶段，访问控制或限速
+- <strong>content_by_lua_file</strong>：content 阶段，产生响应内容
+- <strong>balancer_by_lua_file</strong>：content 阶段，反向代理时选择后端服务器
+- <strong>header_filter_by_lua_file</strong>：filter 阶段，加工处理响应头
+- <strong>body_filter_by_lua_file</strong>：filter 阶段，加工处理响应体
+- <strong>log_by_lua_file</strong>：log 阶段，记录日志或其他的收尾工作
+> 这些指令通常有三种形式：
+> - xxx_by_lua：执行字符串形式的 Lua 代码：
+> - xxx_by_lua_block：功能相同，但指令后是｛ ．．．｝的 Lua 代码块
+> - xxx_by_lua_file：功能相同，但执行磁盘上的 Lua 源码文件。
+> 这边推荐使用 xxx_by_lua_file，它彻底分离了配置文件与业务代码，让两者可以独立部署，而且文件形式也让我们更容易以模块的方式管理组织 Lua 程序。
+下面是 OpenResty 指令所在的阶段和执行的先后顺序图
+<img src=https://cdn.jsdelivr.net/gh/greycodee/images@main/picgo/openrestyflow.png alt>
+## Demo 编写
+为了能够直观的看到上面的处理阶段,接下来编写一个 OpenResty 的 小 demo. 先在本地电脑上安装 OpenResty 然后执行下面命令看看有没有安装成功,如果安装成功了,就会出现版本号
+<code>shell
+$ sudo openresty -v
+nginx version: openresty/1.21.4.1</code>
+然后执行下面命令创建一些文件夹:
+<code>shell
+mkdir testresty &&
+cd testresty &&
+mkdir logs conf service &&
+cd logs && touch error.log && touch access.log</code>
+创建完成后,文件目录结构就像下面这样:
+<code>shell
+├── conf
+├── logs
+│   ├── access.log
+│   └── error.log
+└── service</code>
+其中, config.toml 文件夹是存放 <code>nginx.conf</code> 等配置的地方,然后自己编写的 <code>lua</code> 代码文件可以放在 <strong>service</strong> 文件夹下.
+接下来,创建和编写每个阶段所需的 <code>lua</code> 脚本文件, 只在里面编写一条打印日志的代码, 然后放进 <strong>service</strong> 文件夹下
+- rewrite.lua
+<code>lua
+ngx.log(ngx.ALERT,"this is rewrite")</code>
+- access.lua
+<code>lua
+ngx.log(ngx.ALERT,"this is access")</code>
+- content.lua
+<code>lua
+ngx.log(ngx.ALERT,"this is content")
+-- 响应内容
+ngx.say('hello world')</code>
+- header_filter.lua
+<code>lua
+ngx.log(ngx.ALERT,"this is header_filter")</code>
+- body_filter.lua
+<code>lua
+ngx.log(ngx.ALERT,"this is body_filter")</code>
+- log.lua
+<code>lua
+ngx.log(ngx.ALERT,"this is log")</code>
+编写 <code>nginx.conf</code> 配置文件, 放进 config.toml 文件夹下
+<code>conf
+user root;
+worker_processes 1;
+events {
+worker_connections 512;
+}
+http {
+server {
+listen 80;
+location / {
+rewrite_by_lua_file service/rewrite.lua;
+access_by_lua_file service/access.lua;
+content_by_lua_file service/content.lua;
+header_filter_by_lua_file service/header_filter.lua;
+body_filter_by_lua_file service/body_filter.lua;
+log_by_lua_file service/log.lua;
+}
+}
+}</code>
+然后启动 OpenResty, 使用 <code>-p</code> 选项, 传入你上面创建的文件夹地址
+<code>shell
+$ sudo openresty -p $HOME/testresty</code>
+启动完成后, 然后用浏览器访问 <code>http://localhost</code>, 可以看到上面通过 <code>ngx.say('hello world')</code> 的响应内容设置返回的 <code>hello world</code>.
+打开 <code>logs/error.log</code> 文件,可以看到 Lua 代码里打印的日志:
+<code>shell
+2022/12/26 15:59:26 [alert] 31700#0: *119 [lua] rewrite.lua:1: this is rewrite, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", host: "localhost"
+2022/12/26 15:59:26 [alert] 31700#0: *119 [lua] access.lua:1: this is access, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", host: "localhost"
+2022/12/26 15:59:26 [alert] 31700#0: *119 [lua] content.lua:1: this is content, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", host: "localhost"
+2022/12/26 15:59:26 [alert] 31700#0: *119 [lua] header_filter.lua:1: this is header_filter, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", host: "localhost"
+2022/12/26 15:59:26 [alert] 31700#0: *119 [lua] body_filter.lua:1: this is body_filter, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", host: "localhost"
+2022/12/26 15:59:26 [alert] 31700#0: *119 [lua] body_filter.lua:1: this is body_filter, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", host: "localhost"
+2022/12/26 15:59:26 [alert] 31700#0: *119 [lua] log.lua:1: this is log while logging request, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", host: "localhost"</code>
+通过日志可以观察到每个阶段的执行顺序是怎样的.</h2></article></div></main></body></html>

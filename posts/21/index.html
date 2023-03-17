@@ -1,0 +1,12 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="构建镜像时，需要连接网络下载外网数据时，这时候就需要设置网络代理1. 首先开启你的代理软件，获取代理软件的监听地址。例如我用的是 Clash，它的监听地址是 http://127.0.0.1:78902. 在执行 docker build 命令构建时，添加 --build-arg 参数例如：bash--build-arg HTTP_PROXY=http://127.0.0.1:10803. 完整命令bashdocker build \--network host \--build-arg HTTP_PROXY=http://127.0.0.1:7890 --build-arg HTTPS_PROXY=http://127.0.0.1:7890 \-t xxx:1.0 ."><title>Docker 构建镜像时设置网络代理</title><link rel="shortcut icon" type=image/x-icon href=/issues-blog/><link rel=stylesheet href=/issues-blog/css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css integrity="sha512-6+FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ=="></head><body a=auto><main class=page-content aria-label=Content><div class=w><a href=/>..</a><article><p class=post-meta><time datetime="2023-03-17 14:58:23 +0800 +0800">2023-03-17</time></p><h1>Docker 构建镜像时设置网络代理</h1><p>构建镜像时，需要连接网络下载外网数据时，这时候就需要设置网络代理
+1. 首先开启你的代理软件，获取代理软件的监听地址。例如我用的是 <code>Clash</code>，它的监听地址是 <code>http://127.0.0.1:7890</code>
+2. 在执行 <code>docker build</code> 命令构建时，添加 <code>--build-arg</code> 参数
+例如：
+<code>bash
+--build-arg HTTP_PROXY=http://127.0.0.1:1080</code>
+3. 完整命令
+<code>bash
+docker build \
+--network host \
+--build-arg HTTP_PROXY=http://127.0.0.1:7890 --build-arg HTTPS_PROXY=http://127.0.0.1:7890 \
+-t xxx:1.0 .</code></p></article></div></main></body></html>

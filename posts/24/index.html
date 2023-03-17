@@ -1,0 +1,17 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="创建用户- 首先在用户页面中创建一个 IAM 用户- 然后创建一个组，把刚才创建的用户加进来- 创建组的策略### 对象存储用到的策略- 写入权限- 下载权限- 预验证请求要用到的管理权限## 创建 API KEY1. 在用户页面中，点击刚才创建的用户，进入这个用户的 profile2. 点击 API 密钥3. 点击 添加 API 密钥4. 然后选择生成 API 密钥对5. 下载私钥并保持到本地6. 点击添加后，将文本框的内容粘贴到 ~/.oci/config 文件中。7. 修改 ~/.oci/config 中 key_file 字段的值为你刚才保持私钥的路径这样就可以使用 oci-go-sdk 了 "><title>oci-go-sdk 配置文件创建流程</title><link rel="shortcut icon" type=image/x-icon href=/issues-blog/><link rel=stylesheet href=/issues-blog/css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css integrity="sha512-6+FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ=="></head><body a=auto><main class=page-content aria-label=Content><div class=w><a href=/>..</a><article><p class=post-meta><time datetime="2023-03-17 14:58:23 +0800 +0800">2023-03-17</time></p><h1>oci-go-sdk 配置文件创建流程</h1><h2 id=创建用户----首先在用户httpscloudoraclecomidentityusersregionap-tokyo-1页面中创建一个-iam-用户---然后创建一个组把刚才创建的用户加进来---创建组的策略---对象存储用到的策略---写入权限---下载权限---预验证请求要用到的管理权限---创建-api-key--1-在用户httpscloudoraclecomidentityusersregionap-tokyo-1页面中点击刚才创建的用户进入这个用户的-profile-2-点击-api-密钥-3-点击-添加-api-密钥-4-然后选择生成-api-密钥对-5-下载私钥并保持到本地-6-点击添加后将文本框的内容粘贴到-ociconfig-文件中-7-修改-ociconfig-中-key_file-字段的值为你刚才保持私钥的路径--这样就可以使用-oci-go-sdk-了>创建用户
+- 首先在<a href="https://cloud.oracle.com/identity/users?region=ap-tokyo-1">用户</a>页面中创建一个 <code>IAM</code> 用户
+- 然后创建一个组，把刚才创建的用户加进来
+- 创建组的策略
+### 对象存储用到的策略
+- 写入权限
+- 下载权限
+- 预验证请求要用到的管理权限
+## 创建 API KEY
+1. 在<a href="https://cloud.oracle.com/identity/users?region=ap-tokyo-1">用户</a>页面中，点击刚才创建的用户，进入这个用户的 profile
+2. 点击 <code>API 密钥</code>
+3. 点击 <code>添加 API 密钥</code>
+4. 然后选择生成 API 密钥对
+5. 下载私钥并保持到本地
+6. 点击添加后，将文本框的内容粘贴到 ~/.oci/config 文件中。
+7. 修改 ~/.oci/config 中 <code>key_file</code> 字段的值为你刚才保持私钥的路径
+这样就可以使用 oci-go-sdk 了</h2></article></div></main></body></html>

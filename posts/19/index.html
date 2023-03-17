@@ -1,0 +1,56 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="安装首先要先安装 nvim-tree.lua 和 nvim-web-devicons老规矩,在 Packer 的配置里添加这两个的配置,一般文件路径在 ~/.config/nvim/lua/plugins.lualuause {'nvim-tree/nvim-tree.lua',requires = {'nvim-tree/nvim-web-devicons', -- optional, for file icons},tag = 'nightly' -- optional, updated every week. (see issue #1193)}然后保存,并执行命令进行安装shell$ nvim +PackerInstall## 配置 nvim-tree安装完成后,还要添加下 nvim-tree 的初始化配置文件新建文件夹和文件shell$ mkdir -p ~/.config/nvim/lua/plugin-config && touch ~/.config/nvim/lua/plugin-config/nvim-tree.lua在文件 ~/.config/nvim/lua/plugin-config/nvim-tree.lua 里填入如下配置lua-- examples for your init.lua-- disable netrw at the very start of your init."><title>neovim 配置 nvim-tree 文件树</title><link rel="shortcut icon" type=image/x-icon href=/issues-blog/><link rel=stylesheet href=/issues-blog/css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css integrity="sha512-6+FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ=="></head><body a=auto><main class=page-content aria-label=Content><div class=w><a href=/>..</a><article><p class=post-meta><time datetime="2023-03-17 14:58:23 +0800 +0800">2023-03-17</time></p><h1>neovim 配置 nvim-tree 文件树</h1><h2 id=安装-首先要先安装-nvim-treeluahttpsgithubcomnvim-treenvim-treelua-和-nvim-web-deviconshttpsgithubcomnvim-treenvim-web-devicons--老规矩在-packer-的配置里添加这两个的配置一般文件路径在-confignvimluapluginslua-lua-use--nvim-treenvim-treelua-requires---nvim-treenvim-web-devicons----optional-for-file-icons--tag--nightly----optional-updated-every-week-see-issue-1193---然后保存并执行命令进行安装-shell--nvim-packerinstall----配置-nvim-tree-安装完成后还要添加下-nvim-tree-的初始化配置文件-新建文件夹和文件-shell--mkdir--p-confignvimluaplugin-config--touch-confignvimluaplugin-confignvim-treelua--在文件-confignvimluaplugin-confignvim-treelua-里填入如下配置-lua----examples-for-your-initlua-----disable-netrw-at-the-very-start-of-your-initlua-strongly-advised-vimgloaded_netrw--1-vimgloaded_netrwplugin--1-----set-termguicolors-to-enable-highlight-groups-vimopttermguicolors--true-----empty-setup-using-defaults-requirenvim-treesetup-----or-setup-with-some-options-requirenvim-treesetup-sort_by--case_sensitive-view---adaptive_size--true-mappings---list----key--u-action--dir_up-----renderer---group_empty--true--filters---dotfiles--true----然后在-confignviminitvim-中添加配置的引用-lua-lua-requireplugin-confignvim-tree----添加字体-此时如果你用-nvim-打开一个文件夹如果你看到-icon-图标无法显示时此时就需要安装-nerdfontshttpswwwnerdfontscom-的字体了-我们可以从下载页面httpswwwnerdfontscomfont-downloads随便选一个你喜欢的字体下载然后安装-这里我选择了-jetbrainsmono-nerd-font下载字体然后安装然后设置系统或终端的字体为这个字体---show-httpsiimgurcomj8baxuppng>安装
+首先要先安装 <a href=https://github.com/nvim-tree/nvim-tree.lua/>nvim-tree.lua</a> 和 <a href=https://github.com/nvim-tree/nvim-web-devicons>nvim-web-devicons</a>
+老规矩,在 Packer 的配置里添加这两个的配置,一般文件路径在 <code>~/.config/nvim/lua/plugins.lua</code>
+<code>lua
+use {
+'nvim-tree/nvim-tree.lua',
+requires = {
+'nvim-tree/nvim-web-devicons', -- optional, for file icons
+},
+tag = 'nightly' -- optional, updated every week. (see issue #1193)
+}</code>
+然后保存,并执行命令进行安装
+<code>shell
+$ nvim +PackerInstall</code>
+## 配置 nvim-tree
+安装完成后,还要添加下 <code>nvim-tree</code> 的初始化配置文件
+新建文件夹和文件
+<code>shell
+$ mkdir -p ~/.config/nvim/lua/plugin-config && touch ~/.config/nvim/lua/plugin-config/nvim-tree.lua</code>
+在文件 <code>~/.config/nvim/lua/plugin-config/nvim-tree.lua</code> 里填入如下配置
+<code>lua
+-- examples for your init.lua
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
+-- empty setup using defaults
+require("nvim-tree").setup()
+-- OR setup with some options
+require("nvim-tree").setup({
+sort_by = "case_sensitive",
+view = {
+adaptive_size = true,
+mappings = {
+list = {
+{ key = "u", action = "dir_up" },
+},
+},
+},
+renderer = {
+group_empty = true,
+},
+filters = {
+dotfiles = true,
+},
+})</code>
+然后在 <code>~/.config/nvim/init.vim</code> 中添加配置的引用
+<code>lua
+lua require('plugin-config/nvim-tree')</code>
+## 添加字体
+此时,如果你用 nvim 打开一个文件夹,如果你看到 icon 图标无法显示时,此时就需要安装 <a href=https://www.nerdfonts.com/>nerdfonts</a> 的字体了
+我们可以从<a href=https://www.nerdfonts.com/font-downloads>下载页面</a>随便选一个你喜欢的字体下载然后安装
+这里我选择了 <strong>JetBrainsMono Nerd Font</strong>,下载字体,然后安装,然后设置系统或终端的字体为这个字体
+## Show
+<img src=https://i.imgur.com/J8baxuP.png alt></h2></article></div></main></body></html>
