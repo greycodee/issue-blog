@@ -7,13 +7,31 @@ jobs:
   issues:
     name: Issues
     if: ${{ !github.event.issue.pull_request }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
-      - run: |
-          echo number on issue $NUMBER
+      - uses: actions/checkout@v3
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.108.0'
+          extended: true
+
+      - name: Build
+        run: |
+          hugo new posts/$NUMBER.md
+          cat $BODY >> posts/$NUMBER.md
+          hugo --gc --minify
         env:
           NUMBER: ${{ github.event.issue.number }}
-      - run: |
-          echo A body on issue $BODY
-        env:
           BODY: ${{ github.event.issue.body }}
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.TOKEN }}
+          publish_dir: ./public
