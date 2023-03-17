@@ -1,97 +1,55 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="什么是 OpenRestyOpenResty 一个基于 Nginx 的高性能 Web 平台，能够方便地搭建处理超高并发的动态 Web 应用、Web 服务和动态网关。例如有名的 Kong 网关和国产新秀 ApiSIX 网关都是基于 OpenResty 来进行打造的。OpenResty 通过实现 ngx_lua 和 stream_lua 等 Nginx 模块，把 Lua/LuaJIT 完美地整合进了 Nginx，从而让我们能够在 Nginx 内部里嵌入 Lua 脚本，用 Lua 语言来实现复杂的 HTTP/TCP/UDP 业务逻辑，同时依然保持着高度的并发服务能力。## 处理阶段一个正常的 Web 服务的生命周期可以分成三个阶段：1. initing：服务启动，读取配置文件，初始化内部数据结构2. running：服务运行，接受客户端的请求，返回响应结果3. exiting：服务停止，做一些必要的清理工作，如关闭监听端口OpenResty 主要关注的是 initing 和 running 这两个阶段，并做了更细致的划分### OpenResty 的 initing 阶段- configuration：读取配置文件，解析配置指令，设置运行参数- master-initing：配置文件解析完毕，master 进程初始化公用的数据- worker-initing：worker 进程初始化自己专用的数据### OpenResty 的 running 阶段在 running 阶段，收到客户端的请求后，OpenResty 对每个请求都会使用下面这条流水线进行处理：1."><title>高性能网关基石——OpenResty</title><link rel="shortcut icon" type=image/x-icon href=/issues-blog/><link rel=stylesheet href=/issues-blog/css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css integrity="sha512-6+FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ=="></head><body a=auto><main class=page-content aria-label=Content><div class=w><a href=/>..</a><article><p class=post-meta><time datetime="2023-03-17 14:58:23 +0800 +0800">2023-03-17</time></p><h1>高性能网关基石——OpenResty</h1><h2 id=什么是-openresty-openresty-一个基于-nginx-的高性能-web-平台能够方便地搭建处理超高并发的动态-web-应用-web-服务和动态网关例如有名的-kong-网关和国产新秀-apisix-网关都是基于-openresty-来进行打造的--openresty-通过实现-ngx_lua-和-stream_lua-等-nginx-模块把-lualuajit-完美地整合进了-nginx从而让我们能够在-nginx-内部里嵌入-lua-脚本用-lua-语言来实现复杂的-httptcpudp-业务逻辑同时依然保持着高度的并发服务能力---处理阶段-一个正常的-web-服务的生命周期可以分成三个阶段-1-initing服务启动读取配置文件初始化内部数据结构-2-running服务运行接受客户端的请求返回响应结果-3-exiting服务停止做一些必要的清理工作如关闭监听端口--openresty-主要关注的是-initing-和-running-这两个阶段并做了更细致的划分--openresty-的-initing-阶段---configuration读取配置文件解析配置指令设置运行参数---master-initing配置文件解析完毕master-进程初始化公用的数据---worker-initingworker-进程初始化自己专用的数据---openresty-的-running-阶段-在-running-阶段收到客户端的请求后openresty-对每个请求都会使用下面这条流水线进行处理-1-sslssltls-安全通信和验证-2-preread-在正式处理之前预读数据接收-http-请求头-3-rewrite检查改写-uri-实现跳转重定向-4-access访问权限控制-5-content产生响应内容-6-filter对-content-阶段产生的内容进行过滤加工处理-7-log-请求处理完毕记录日志或者其他的收尾工作--httpscdnjsdelivrnetghgreycodeeimagesmainpicgoopenresty-phasepng---openresty-执行程序-openresty-根据上面的处理阶段提供了一些指令在开发时使用它们就可以在这些阶段里面插入-lua-代码执行业务逻辑---init_by_lua_filemaster-initing-阶段初始化全局配置或模块---init_worker_by_lua_fileworker-initing-阶段初始化进程专用功能---ssl_certificate_by_lua_filessl-阶段在握手时设置安全证书---set_by_lua_filerewrite-阶段改写-nginx-变量---rewrite_by_lua_filerewrite-阶段改写-uri-实现跳转或重定向---access_by_lua_fileaccess-阶段访问控制或限速---content_by_lua_filecontent-阶段产生响应内容---balancer_by_lua_filecontent-阶段反向代理时选择后端服务器---header_filter_by_lua_filefilter-阶段加工处理响应头---body_filter_by_lua_filefilter-阶段加工处理响应体---log_by_lua_filelog-阶段记录日志或其他的收尾工作---这些指令通常有三种形式----xxx_by_lua执行字符串形式的-lua-代码----xxx_by_lua_block功能相同但指令后是-的-lua-代码块----xxx_by_lua_file功能相同但执行磁盘上的-lua-源码文件--这边推荐使用-xxx_by_lua_file它彻底分离了配置文件与业务代码让两者可以独立部署而且文件形式也让我们更容易以模块的方式管理组织-lua-程序--下面是-openresty-指令所在的阶段和执行的先后顺序图-httpscdnjsdelivrnetghgreycodeeimagesmainpicgoopenrestyflowpng----demo-编写--为了能够直观的看到上面的处理阶段接下来编写一个-openresty-的-小-demo-先在本地电脑上安装-openresty-然后执行下面命令看看有没有安装成功如果安装成功了就会出现版本号-shell--sudo-openresty--v-nginx-version-openresty12141--然后执行下面命令创建一些文件夹-shell-mkdir-testresty---cd-testresty---mkdir-logs-conf-service---cd-logs--touch-errorlog--touch-accesslog--创建完成后文件目录结构就像下面这样-shell--conf--logs---accesslog---errorlog--service--其中-configtoml-文件夹是存放-nginxconf-等配置的地方然后自己编写的-lua-代码文件可以放在-service-文件夹下-接下来创建和编写每个阶段所需的-lua-脚本文件-只在里面编写一条打印日志的代码-然后放进-service-文件夹下---rewritelua-lua-ngxlogngxalertthis-is-rewrite----accesslua-lua-ngxlogngxalertthis-is-access-----contentlua-lua-ngxlogngxalertthis-is-content----响应内容-ngxsayhello-world-----header_filterlua-lua-ngxlogngxalertthis-is-header_filter-----body_filterlua-lua-ngxlogngxalertthis-is-body_filter-----loglua-lua-ngxlogngxalertthis-is-log---编写-nginxconf-配置文件-放进-configtoml-文件夹下-conf-user-root--worker_processes-1-events--worker_connections-512---http--server--listen-80--location---rewrite_by_lua_file-servicerewritelua-access_by_lua_file-serviceaccesslua-content_by_lua_file-servicecontentlua-header_filter_by_lua_file-serviceheader_filterlua-body_filter_by_lua_file-servicebody_filterlua-log_by_lua_file-serviceloglua------然后启动-openresty-使用--p-选项-传入你上面创建的文件夹地址-shell--sudo-openresty--p-hometestresty--启动完成后-然后用浏览器访问-httplocalhost-可以看到上面通过-ngxsayhello-world-的响应内容设置返回的-hello-world-打开-logserrorlog-文件可以看到-lua-代码里打印的日志-shell-20221226-155926-alert-317000-119-lua-rewritelua1-this-is-rewrite-client-127001-server--request-get--http11-host-localhost-20221226-155926-alert-317000-119-lua-accesslua1-this-is-access-client-127001-server--request-get--http11-host-localhost-20221226-155926-alert-317000-119-lua-contentlua1-this-is-content-client-127001-server--request-get--http11-host-localhost-20221226-155926-alert-317000-119-lua-header_filterlua1-this-is-header_filter-client-127001-server--request-get--http11-host-localhost-20221226-155926-alert-317000-119-lua-body_filterlua1-this-is-body_filter-client-127001-server--request-get--http11-host-localhost-20221226-155926-alert-317000-119-lua-body_filterlua1-this-is-body_filter-client-127001-server--request-get--http11-host-localhost-20221226-155926-alert-317000-119-lua-loglua1-this-is-log-while-logging-request-client-127001-server--request-get--http11-host-localhost--通过日志可以观察到每个阶段的执行顺序是怎样的>什么是 OpenResty
-OpenResty 一个基于 Nginx 的高性能 Web 平台，能够方便地搭建处理超高并发的动态 Web 应用、
-Web 服务和动态网关。例如有名的 Kong 网关和国产新秀 ApiSIX 网关都是基于 OpenResty 来进行打造的。
-OpenResty 通过实现 <code>ngx_lua</code> 和 <code>stream_lua</code> 等 Nginx 模块，把 Lua/LuaJIT 完美地整合进了 Nginx，从而让我们能够在 Nginx 内部里嵌入 Lua 脚本，用 Lua 语言来实现复杂的 HTTP/TCP/UDP 业务逻辑，同时依然保持着高度的并发服务能力。
-## 处理阶段
-一个正常的 Web 服务的生命周期可以分成三个阶段：
-1. <strong>initing</strong>：服务启动，读取配置文件，初始化内部数据结构
-2. <strong>running</strong>：服务运行，接受客户端的请求，返回响应结果
-3. <strong>exiting</strong>：服务停止，做一些必要的清理工作，如关闭监听端口
-OpenResty 主要关注的是 <strong>initing</strong> 和 <strong>running</strong> 这两个阶段，并做了更细致的划分
-### OpenResty 的 initing 阶段
-- <strong>configuration</strong>：读取配置文件，解析配置指令，设置运行参数
-- <strong>master-initing</strong>：配置文件解析完毕，master 进程初始化公用的数据
-- <strong>worker-initing</strong>：worker 进程初始化自己专用的数据
-### OpenResty 的 running 阶段
-在 running 阶段，收到客户端的请求后，OpenResty 对每个请求都会使用下面这条流水线进行处理：
-1. <strong>ssl</strong>：SSL/TLS 安全通信和验证
-2. <strong>preread</strong>： 在正式处理之前<strong>预读</strong>数据，接收 HTTP 请求头
-3. <strong>rewrite</strong>：检查、改写 URI ，实现跳转重定向
-4. <strong>access</strong>：访问权限控制
-5. <strong>content</strong>：产生响应内容
-6. <strong>filter</strong>：对 content 阶段产生的内容进行过滤加工处理
-7. <strong>log</strong>： 请求处理完毕，记录日志，或者其他的收尾工作。
-<img src=https://cdn.jsdelivr.net/gh/greycodee/images@main/picgo/openresty-phase.png alt>
-## OpenResty 执行程序
-OpenResty 根据上面的处理阶段提供了一些指令，在开发时使用它们就可以在这些阶段里面插入 Lua 代码，执行业务逻辑：
-- <strong>init_by_lua_file</strong>：master-initing 阶段，初始化全局配置或模块
-- <strong>init_worker_by_lua_file</strong>：worker-initing 阶段，初始化进程专用功能
-- <strong>ssl_certificate_by_lua_file</strong>：ssl 阶段，在握手时设置安全证书
-- <strong>set_by_lua_file</strong>：rewrite 阶段，改写 Nginx 变量
-- <strong>rewrite_by_lua_file</strong>：rewrite 阶段，改写 URI ，实现跳转或重定向
-- <strong>access_by_lua_file</strong>：access 阶段，访问控制或限速
-- <strong>content_by_lua_file</strong>：content 阶段，产生响应内容
-- <strong>balancer_by_lua_file</strong>：content 阶段，反向代理时选择后端服务器
-- <strong>header_filter_by_lua_file</strong>：filter 阶段，加工处理响应头
-- <strong>body_filter_by_lua_file</strong>：filter 阶段，加工处理响应体
-- <strong>log_by_lua_file</strong>：log 阶段，记录日志或其他的收尾工作
-> 这些指令通常有三种形式：
-> - xxx_by_lua：执行字符串形式的 Lua 代码：
-> - xxx_by_lua_block：功能相同，但指令后是｛ ．．．｝的 Lua 代码块
-> - xxx_by_lua_file：功能相同，但执行磁盘上的 Lua 源码文件。
-> 这边推荐使用 xxx_by_lua_file，它彻底分离了配置文件与业务代码，让两者可以独立部署，而且文件形式也让我们更容易以模块的方式管理组织 Lua 程序。
-下面是 OpenResty 指令所在的阶段和执行的先后顺序图
-<img src=https://cdn.jsdelivr.net/gh/greycodee/images@main/picgo/openrestyflow.png alt>
-## Demo 编写
-为了能够直观的看到上面的处理阶段,接下来编写一个 OpenResty 的 小 demo. 先在本地电脑上安装 OpenResty 然后执行下面命令看看有没有安装成功,如果安装成功了,就会出现版本号
-<code>shell
-$ sudo openresty -v
-nginx version: openresty/1.21.4.1</code>
-然后执行下面命令创建一些文件夹:
-<code>shell
-mkdir testresty &&
-cd testresty &&
-mkdir logs conf service &&
-cd logs && touch error.log && touch access.log</code>
-创建完成后,文件目录结构就像下面这样:
-<code>shell
-├── conf
-├── logs
-│   ├── access.log
-│   └── error.log
-└── service</code>
-其中, config.toml 文件夹是存放 <code>nginx.conf</code> 等配置的地方,然后自己编写的 <code>lua</code> 代码文件可以放在 <strong>service</strong> 文件夹下.
-接下来,创建和编写每个阶段所需的 <code>lua</code> 脚本文件, 只在里面编写一条打印日志的代码, 然后放进 <strong>service</strong> 文件夹下
-- rewrite.lua
-<code>lua
-ngx.log(ngx.ALERT,"this is rewrite")</code>
-- access.lua
-<code>lua
-ngx.log(ngx.ALERT,"this is access")</code>
-- content.lua
-<code>lua
-ngx.log(ngx.ALERT,"this is content")
--- 响应内容
-ngx.say('hello world')</code>
-- header_filter.lua
-<code>lua
-ngx.log(ngx.ALERT,"this is header_filter")</code>
-- body_filter.lua
-<code>lua
-ngx.log(ngx.ALERT,"this is body_filter")</code>
-- log.lua
-<code>lua
-ngx.log(ngx.ALERT,"this is log")</code>
-编写 <code>nginx.conf</code> 配置文件, 放进 config.toml 文件夹下
-<code>conf
-user root;
+<!doctype html><html lang=en-us prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"><head lang=en-us><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><meta name=HandheldFriendly content="True"><meta name=MobileOptimized content="320"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="dark light"><meta name=description content="什么是 OpenResty OpenResty 一个基于 Nginx 的高性能 Web 平台，能够方便地搭建处理超高并发的动态 Web 应用、 Web 服务和动态网关。例如有名的 Kong 网关和国产新秀 ApiSIX 网关都是基于 OpenResty 来进行打造的。
+OpenResty 通过实现 ngx_lua 和 stream_lua 等 Nginx 模块，把 Lua/LuaJIT 完美地整合进了 Nginx，从而让我们能够在 Nginx 内部里嵌入 Lua 脚本，用 Lua 语言来实现复杂的 HTTP/TCP/UDP 业务逻辑，同时依然保持着高度的并发服务能力。
+处理阶段 一个正常的 Web 服务的生命周期可以分成三个阶段：
+initing：服务启动，读取配置文件，初始化内部数据结构 running：服务运行，接受客户端的请求，返回响应结果 exiting：服务停止，做一些必要的清理工作，如关闭监听端口 OpenResty 主要关注的是 initing 和 running 这两个阶段，并做了更细致的划分
+OpenResty 的 initing 阶段 configuration：读取配置文件，解析配置指令，设置运行参数 master-initing：配置文件解析完毕，master 进程初始化公用的数据 worker-initing：worker 进程初始化自己专用的数据 OpenResty 的 running 阶段 在 running 阶段，收到客户端的请求后，OpenResty 对每个请求都会使用下面这条流水线进行处理：
+ssl：SSL/TLS 安全通信和验证 preread： 在正式处理之前预读数据，接收 HTTP 请求头 rewrite：检查、改写 URI ，实现跳转重定向 access：访问权限控制 content：产生响应内容 filter：对 content 阶段产生的内容进行过滤加工处理 log： 请求处理完毕，记录日志，或者其他的收尾工作。 OpenResty 执行程序 OpenResty 根据上面的处理阶段提供了一些指令，在开发时使用它们就可以在这些阶段里面插入 Lua 代码，执行业务逻辑："><meta name=author content><meta name=keywords content><title>高性能网关基石——OpenResty | Issues Blog</title><link rel=canonical href=https://blog.greycode.top/issues-blog/posts/15/><meta property="og:type" content="article"><meta property="og:description" content="什么是 OpenResty OpenResty 一个基于 Nginx 的高性能 Web 平台，能够方便地搭建处理超高并发的动态 Web 应用、 Web 服务和动态网关。例如有名的 Kong 网关和国产新秀 ApiSIX 网关都是基于 OpenResty 来进行打造的。
+OpenResty 通过实现 ngx_lua 和 stream_lua 等 Nginx 模块，把 Lua/LuaJIT 完美地整合进了 Nginx，从而让我们能够在 Nginx 内部里嵌入 Lua 脚本，用 Lua 语言来实现复杂的 HTTP/TCP/UDP 业务逻辑，同时依然保持着高度的并发服务能力。
+处理阶段 一个正常的 Web 服务的生命周期可以分成三个阶段：
+initing：服务启动，读取配置文件，初始化内部数据结构 running：服务运行，接受客户端的请求，返回响应结果 exiting：服务停止，做一些必要的清理工作，如关闭监听端口 OpenResty 主要关注的是 initing 和 running 这两个阶段，并做了更细致的划分
+OpenResty 的 initing 阶段 configuration：读取配置文件，解析配置指令，设置运行参数 master-initing：配置文件解析完毕，master 进程初始化公用的数据 worker-initing：worker 进程初始化自己专用的数据 OpenResty 的 running 阶段 在 running 阶段，收到客户端的请求后，OpenResty 对每个请求都会使用下面这条流水线进行处理：
+ssl：SSL/TLS 安全通信和验证 preread： 在正式处理之前预读数据，接收 HTTP 请求头 rewrite：检查、改写 URI ，实现跳转重定向 access：访问权限控制 content：产生响应内容 filter：对 content 阶段产生的内容进行过滤加工处理 log： 请求处理完毕，记录日志，或者其他的收尾工作。 OpenResty 执行程序 OpenResty 根据上面的处理阶段提供了一些指令，在开发时使用它们就可以在这些阶段里面插入 Lua 代码，执行业务逻辑："><meta property="og:title" content="高性能网关基石——OpenResty"><meta property="og:site_name" content="Issues Blog"><meta property="og:image:type" content="image/jpeg"><meta property="og:url" content="https://blog.greycode.top/issues-blog/posts/15/"><meta property="og:locale" content="en-us"><meta property="article:published_time" content="2023-03-17"><meta property="article:modified_time" content="2023-03-17"><meta name=twitter:card content="summary"><meta name=twitter:title content="高性能网关基石——OpenResty | Issues Blog"><meta name=twitter:description content="什么是 OpenResty OpenResty 一个基于 Nginx 的高性能 Web 平台，能够方便地搭建处理超高并发的动态 Web 应用、 Web 服务和动态网关。例如有名的 Kong 网关和国产新秀 ApiSIX 网关都是基于 OpenResty 来进行打造的。
+OpenResty 通过实现 ngx_lua 和 stream_lua 等 Nginx 模块，把 Lua/LuaJIT 完美地整合进了 Nginx，从而让我们能够在 Nginx 内部里嵌入 Lua 脚本，用 Lua 语言来实现复杂的 HTTP/TCP/UDP 业务逻辑，同时依然保持着高度的并发服务能力。
+处理阶段 一个正常的 Web 服务的生命周期可以分成三个阶段：
+initing：服务启动，读取配置文件，初始化内部数据结构 running：服务运行，接受客户端的请求，返回响应结果 exiting：服务停止，做一些必要的清理工作，如关闭监听端口 OpenResty 主要关注的是 initing 和 running 这两个阶段，并做了更细致的划分
+OpenResty 的 initing 阶段 configuration：读取配置文件，解析配置指令，设置运行参数 master-initing：配置文件解析完毕，master 进程初始化公用的数据 worker-initing：worker 进程初始化自己专用的数据 OpenResty 的 running 阶段 在 running 阶段，收到客户端的请求后，OpenResty 对每个请求都会使用下面这条流水线进行处理：
+ssl：SSL/TLS 安全通信和验证 preread： 在正式处理之前预读数据，接收 HTTP 请求头 rewrite：检查、改写 URI ，实现跳转重定向 access：访问权限控制 content：产生响应内容 filter：对 content 阶段产生的内容进行过滤加工处理 log： 请求处理完毕，记录日志，或者其他的收尾工作。 OpenResty 执行程序 OpenResty 根据上面的处理阶段提供了一些指令，在开发时使用它们就可以在这些阶段里面插入 Lua 代码，执行业务逻辑："><meta name=twitter:domain content="https://blog.greycode.top/issues-blog/posts/15/"><link rel=icon href=https://blog.greycode.top/issues-blog/favicon.ico><link rel=stylesheet href=//cdn.jsdelivr.net/npm/modern-normalize@1.0.0/modern-normalize.min.css><link rel=stylesheet href=https://blog.greycode.top/issues-blog/style.min.ac3c47b4dc9a506af60a9bd3f8351fd882635c7e326aa3a64223fe59caf9a852.css integrity="sha256-rDxHtNyaUGr2CpvT+DUf2IJjXH4yaqOmQiP+Wcr5qFI=" rel="preload stylesheet" as=style></head><body><script>const currentTheme=window.localStorage.getItem("theme");currentTheme==="dark"?document.body.classList.toggle("theme-dark"):currentTheme=="light"&&document.body.classList.toggle("theme-light")</script><header id=header><div class=row><div class="container has-padding nav"><button id=navbar-toggler class=navbar-button aria-hidden=true><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M64 384h384v-42.67H64zm0-106.67h384v-42.66H64zM64 128v42.67h384V128z"/></svg></button><div class=navbar-brand><a class="logo navbar-button" href=https://blog.greycode.top/issues-blog/ title="Issues Blog"><span>Issues Blog</span></a></div><nav class=navbar role=navigation><ul></ul></nav><div class=theme-selector><button class="button is-text" id=theme-selector-button title="toggle theme">
+<span class="label icon"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M256 32C132.29 32 32 132.29 32 256s100.29 224 224 224 224-100.29 224-224S379.71 32 256 32zM128.72 383.28A180 180 0 01256 76v360a178.82 178.82.0 01-127.28-52.72z"/></svg></span></button></div></div><div class="container has-padding"><div class=breadcrumb><ol class=breadcrumb-nav><li><a href=https://blog.greycode.top/issues-blog/>Home</a></li><li><a href=https://blog.greycode.top/issues-blog/posts/>Posts</a></li><li class=active><a href=https://blog.greycode.top/issues-blog/posts/15/>高性能网关基石——OpenResty</a></li></ol></div></div></div></header><main id=main><div class="container has-padding"><div class="article-card post single"><h1 class=title>高性能网关基石——OpenResty</h1><div class=post-info><span><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M32 456a24 24 0 0024 24h4e2a24 24 0 0024-24V176H32zm320-244a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm-80-80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm-80-80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm-80-80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zM456 64h-55.92V32h-48v32H159.92V32h-48v32H56A23.8 23.8.0 0032 87.77V144h448V87.77A23.8 23.8.0 00456 64z"/></svg><time datetime=2023-03-17T14:58:23+0800 class=date>March 17, 2023</time></span>
+<span><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M256 48C141.13 48 48 141.13 48 256c0 114.69 93.32 208 208 208 114.86.0 208-93.14 208-208 0-114.69-93.31-208-208-208zm108 240H244a4 4 0 01-4-4V116a4 4 0 014-4h24a4 4 0 014 4v140h92a4 4 0 014 4v24a4 4 0 01-4 4z"/></svg>3 mins to read</span>
+<span>posts</span></div><article class="post-entry content"><h2 id=什么是-openresty>什么是 OpenResty</h2><p>OpenResty 一个基于 Nginx 的高性能 Web 平台，能够方便地搭建处理超高并发的动态 Web 应用、
+Web 服务和动态网关。例如有名的 Kong 网关和国产新秀 ApiSIX 网关都是基于 OpenResty 来进行打造的。</p><p>OpenResty 通过实现 <code>ngx_lua</code> 和 <code>stream_lua</code> 等 Nginx 模块，把 Lua/LuaJIT 完美地整合进了 Nginx，从而让我们能够在 Nginx 内部里嵌入 Lua 脚本，用 Lua 语言来实现复杂的 HTTP/TCP/UDP 业务逻辑，同时依然保持着高度的并发服务能力。</p><h2 id=处理阶段>处理阶段</h2><p>一个正常的 Web 服务的生命周期可以分成三个阶段：</p><ol><li><strong>initing</strong>：服务启动，读取配置文件，初始化内部数据结构</li><li><strong>running</strong>：服务运行，接受客户端的请求，返回响应结果</li><li><strong>exiting</strong>：服务停止，做一些必要的清理工作，如关闭监听端口</li></ol><p>OpenResty 主要关注的是 <strong>initing</strong> 和 <strong>running</strong> 这两个阶段，并做了更细致的划分</p><h3 id=openresty-的-initing-阶段>OpenResty 的 initing 阶段</h3><ul><li><strong>configuration</strong>：读取配置文件，解析配置指令，设置运行参数</li><li><strong>master-initing</strong>：配置文件解析完毕，master 进程初始化公用的数据</li><li><strong>worker-initing</strong>：worker 进程初始化自己专用的数据</li></ul><h3 id=openresty-的-running-阶段>OpenResty 的 running 阶段</h3><p>在 running 阶段，收到客户端的请求后，OpenResty 对每个请求都会使用下面这条流水线进行处理：</p><ol><li><strong>ssl</strong>：SSL/TLS 安全通信和验证</li><li><strong>preread</strong>： 在正式处理之前<strong>预读</strong>数据，接收 HTTP 请求头</li><li><strong>rewrite</strong>：检查、改写 URI ，实现跳转重定向</li><li><strong>access</strong>：访问权限控制</li><li><strong>content</strong>：产生响应内容</li><li><strong>filter</strong>：对 content 阶段产生的内容进行过滤加工处理</li><li><strong>log</strong>： 请求处理完毕，记录日志，或者其他的收尾工作。</li></ol><p><img src=https://cdn.jsdelivr.net/gh/greycodee/images@main/picgo/openresty-phase.png alt></p><h2 id=openresty-执行程序>OpenResty 执行程序</h2><p>OpenResty 根据上面的处理阶段提供了一些指令，在开发时使用它们就可以在这些阶段里面插入 Lua 代码，执行业务逻辑：</p><ul><li><strong>init_by_lua_file</strong>：master-initing 阶段，初始化全局配置或模块</li><li><strong>init_worker_by_lua_file</strong>：worker-initing 阶段，初始化进程专用功能</li><li><strong>ssl_certificate_by_lua_file</strong>：ssl 阶段，在握手时设置安全证书</li><li><strong>set_by_lua_file</strong>：rewrite 阶段，改写 Nginx 变量</li><li><strong>rewrite_by_lua_file</strong>：rewrite 阶段，改写 URI ，实现跳转或重定向</li><li><strong>access_by_lua_file</strong>：access 阶段，访问控制或限速</li><li><strong>content_by_lua_file</strong>：content 阶段，产生响应内容</li><li><strong>balancer_by_lua_file</strong>：content 阶段，反向代理时选择后端服务器</li><li><strong>header_filter_by_lua_file</strong>：filter 阶段，加工处理响应头</li><li><strong>body_filter_by_lua_file</strong>：filter 阶段，加工处理响应体</li><li><strong>log_by_lua_file</strong>：log 阶段，记录日志或其他的收尾工作</li></ul><blockquote><p>这些指令通常有三种形式：</p><ul><li>xxx_by_lua：执行字符串形式的 Lua 代码：</li><li>xxx_by_lua_block：功能相同，但指令后是｛ ．．．｝的 Lua 代码块</li><li>xxx_by_lua_file：功能相同，但执行磁盘上的 Lua 源码文件。
+这边推荐使用 xxx_by_lua_file，它彻底分离了配置文件与业务代码，让两者可以独立部署，而且文件形式也让我们更容易以模块的方式管理组织 Lua 程序。</li></ul></blockquote><p>下面是 OpenResty 指令所在的阶段和执行的先后顺序图
+<img src=https://cdn.jsdelivr.net/gh/greycodee/images@main/picgo/openrestyflow.png alt></p><h2 id=demo-编写>Demo 编写</h2><p>为了能够直观的看到上面的处理阶段,接下来编写一个 OpenResty 的 小 demo. 先在本地电脑上安装 OpenResty 然后执行下面命令看看有没有安装成功,如果安装成功了,就会出现版本号</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ sudo openresty -v
+</span></span><span style=display:flex><span>nginx version: openresty/1.21.4.1
+</span></span></code></pre></div><p>然后执行下面命令创建一些文件夹:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>mkdir testresty <span style=color:#f92672>&amp;&amp;</span> 
+</span></span><span style=display:flex><span>cd testresty <span style=color:#f92672>&amp;&amp;</span> 
+</span></span><span style=display:flex><span>mkdir logs conf service <span style=color:#f92672>&amp;&amp;</span> 
+</span></span><span style=display:flex><span>cd logs <span style=color:#f92672>&amp;&amp;</span> touch error.log <span style=color:#f92672>&amp;&amp;</span> touch access.log
+</span></span></code></pre></div><p>创建完成后,文件目录结构就像下面这样:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>├── conf
+</span></span><span style=display:flex><span>├── logs
+</span></span><span style=display:flex><span>│   ├── access.log
+</span></span><span style=display:flex><span>│   └── error.log
+</span></span><span style=display:flex><span>└── service
+</span></span></code></pre></div><p>其中, config.toml 文件夹是存放 <code>nginx.conf</code> 等配置的地方,然后自己编写的 <code>lua</code> 代码文件可以放在 <strong>service</strong> 文件夹下.
+接下来,创建和编写每个阶段所需的 <code>lua</code> 脚本文件, 只在里面编写一条打印日志的代码, 然后放进 <strong>service</strong> 文件夹下</p><ul><li>rewrite.lua</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-lua data-lang=lua><span style=display:flex><span>ngx.log(ngx.ALERT,<span style=color:#e6db74>&#34;this is rewrite&#34;</span>)
+</span></span></code></pre></div><ul><li>access.lua</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-lua data-lang=lua><span style=display:flex><span>ngx.log(ngx.ALERT,<span style=color:#e6db74>&#34;this is access&#34;</span>)
+</span></span></code></pre></div><ul><li>content.lua</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-lua data-lang=lua><span style=display:flex><span>ngx.log(ngx.ALERT,<span style=color:#e6db74>&#34;this is content&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#75715e>-- 响应内容</span>
+</span></span><span style=display:flex><span>ngx.say(<span style=color:#e6db74>&#39;hello world&#39;</span>)
+</span></span></code></pre></div><ul><li>header_filter.lua</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-lua data-lang=lua><span style=display:flex><span>ngx.log(ngx.ALERT,<span style=color:#e6db74>&#34;this is header_filter&#34;</span>)
+</span></span></code></pre></div><ul><li>body_filter.lua</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-lua data-lang=lua><span style=display:flex><span>ngx.log(ngx.ALERT,<span style=color:#e6db74>&#34;this is body_filter&#34;</span>)
+</span></span></code></pre></div><ul><li>log.lua</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-lua data-lang=lua><span style=display:flex><span>ngx.log(ngx.ALERT,<span style=color:#e6db74>&#34;this is log&#34;</span>)
+</span></span></code></pre></div><p>编写 <code>nginx.conf</code> 配置文件, 放进 config.toml 文件夹下</p><pre tabindex=0><code class=language-conf data-lang=conf>user root;
+
 worker_processes 1;
 events {
 worker_connections 512;
 }
+
 http {
 server {
 listen 80;
+
 location / {
 rewrite_by_lua_file service/rewrite.lua;
 access_by_lua_file service/access.lua;
@@ -100,19 +58,35 @@ header_filter_by_lua_file service/header_filter.lua;
 body_filter_by_lua_file service/body_filter.lua;
 log_by_lua_file service/log.lua;
 }
+
 }
-}</code>
-然后启动 OpenResty, 使用 <code>-p</code> 选项, 传入你上面创建的文件夹地址
-<code>shell
-$ sudo openresty -p $HOME/testresty</code>
-启动完成后, 然后用浏览器访问 <code>http://localhost</code>, 可以看到上面通过 <code>ngx.say('hello world')</code> 的响应内容设置返回的 <code>hello world</code>.
-打开 <code>logs/error.log</code> 文件,可以看到 Lua 代码里打印的日志:
-<code>shell
-2022/12/26 15:59:26 [alert] 31700#0: *119 [lua] rewrite.lua:1: this is rewrite, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", host: "localhost"
-2022/12/26 15:59:26 [alert] 31700#0: *119 [lua] access.lua:1: this is access, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", host: "localhost"
-2022/12/26 15:59:26 [alert] 31700#0: *119 [lua] content.lua:1: this is content, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", host: "localhost"
-2022/12/26 15:59:26 [alert] 31700#0: *119 [lua] header_filter.lua:1: this is header_filter, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", host: "localhost"
-2022/12/26 15:59:26 [alert] 31700#0: *119 [lua] body_filter.lua:1: this is body_filter, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", host: "localhost"
-2022/12/26 15:59:26 [alert] 31700#0: *119 [lua] body_filter.lua:1: this is body_filter, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", host: "localhost"
-2022/12/26 15:59:26 [alert] 31700#0: *119 [lua] log.lua:1: this is log while logging request, client: 127.0.0.1, server: , request: "GET / HTTP/1.1", host: "localhost"</code>
-通过日志可以观察到每个阶段的执行顺序是怎样的.</h2></article></div></main></body></html>
+}
+</code></pre><p>然后启动 OpenResty, 使用 <code>-p</code> 选项, 传入你上面创建的文件夹地址</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>$ sudo openresty -p $HOME/testresty
+</span></span></code></pre></div><p>启动完成后, 然后用浏览器访问 <code>http://localhost</code>, 可以看到上面通过 <code>ngx.say('hello world')</code> 的响应内容设置返回的 <code>hello world</code>.
+打开 <code>logs/error.log</code> 文件,可以看到 Lua 代码里打印的日志:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>2022/12/26 15:59:26 <span style=color:#f92672>[</span>alert<span style=color:#f92672>]</span> 31700#0: *119 <span style=color:#f92672>[</span>lua<span style=color:#f92672>]</span> rewrite.lua:1: this is rewrite, client: 127.0.0.1, server: , request: <span style=color:#e6db74>&#34;GET / HTTP/1.1&#34;</span>, host: <span style=color:#e6db74>&#34;localhost&#34;</span>
+</span></span><span style=display:flex><span>2022/12/26 15:59:26 <span style=color:#f92672>[</span>alert<span style=color:#f92672>]</span> 31700#0: *119 <span style=color:#f92672>[</span>lua<span style=color:#f92672>]</span> access.lua:1: this is access, client: 127.0.0.1, server: , request: <span style=color:#e6db74>&#34;GET / HTTP/1.1&#34;</span>, host: <span style=color:#e6db74>&#34;localhost&#34;</span>
+</span></span><span style=display:flex><span>2022/12/26 15:59:26 <span style=color:#f92672>[</span>alert<span style=color:#f92672>]</span> 31700#0: *119 <span style=color:#f92672>[</span>lua<span style=color:#f92672>]</span> content.lua:1: this is content, client: 127.0.0.1, server: , request: <span style=color:#e6db74>&#34;GET / HTTP/1.1&#34;</span>, host: <span style=color:#e6db74>&#34;localhost&#34;</span>
+</span></span><span style=display:flex><span>2022/12/26 15:59:26 <span style=color:#f92672>[</span>alert<span style=color:#f92672>]</span> 31700#0: *119 <span style=color:#f92672>[</span>lua<span style=color:#f92672>]</span> header_filter.lua:1: this is header_filter, client: 127.0.0.1, server: , request: <span style=color:#e6db74>&#34;GET / HTTP/1.1&#34;</span>, host: <span style=color:#e6db74>&#34;localhost&#34;</span>
+</span></span><span style=display:flex><span>2022/12/26 15:59:26 <span style=color:#f92672>[</span>alert<span style=color:#f92672>]</span> 31700#0: *119 <span style=color:#f92672>[</span>lua<span style=color:#f92672>]</span> body_filter.lua:1: this is body_filter, client: 127.0.0.1, server: , request: <span style=color:#e6db74>&#34;GET / HTTP/1.1&#34;</span>, host: <span style=color:#e6db74>&#34;localhost&#34;</span>
+</span></span><span style=display:flex><span>2022/12/26 15:59:26 <span style=color:#f92672>[</span>alert<span style=color:#f92672>]</span> 31700#0: *119 <span style=color:#f92672>[</span>lua<span style=color:#f92672>]</span> body_filter.lua:1: this is body_filter, client: 127.0.0.1, server: , request: <span style=color:#e6db74>&#34;GET / HTTP/1.1&#34;</span>, host: <span style=color:#e6db74>&#34;localhost&#34;</span>
+</span></span><span style=display:flex><span>2022/12/26 15:59:26 <span style=color:#f92672>[</span>alert<span style=color:#f92672>]</span> 31700#0: *119 <span style=color:#f92672>[</span>lua<span style=color:#f92672>]</span> log.lua:1: this is log <span style=color:#66d9ef>while</span> logging request, client: 127.0.0.1, server: , request: <span style=color:#e6db74>&#34;GET / HTTP/1.1&#34;</span>, host: <span style=color:#e6db74>&#34;localhost&#34;</span>
+</span></span></code></pre></div><p>通过日志可以观察到每个阶段的执行顺序是怎样的.</p></article></div><div class="meta article-card"><div class=row><span class=label><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M32 456a24 24 0 0024 24h4e2a24 24 0 0024-24V176H32zm320-244a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm-80-80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm-80-80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm-80-80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zM456 64h-55.92V32h-48v32H159.92V32h-48v32H56A23.8 23.8.0 0032 87.77V144h448V87.77A23.8 23.8.0 00456 64z"/></svg>Published At</span><time>2023-03-17 06:58 UTC</time></div><div class="row social-share"><span class=label><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M272 176v161h-32V176H92a12 12 0 00-12 12v280a12 12 0 0012 12h328a12 12 0 0012-12V188a12 12 0 00-12-12zm0-83.37 64 64L358.63 134 256 31.37 153.37 134 176 156.63l64-64V176h32V92.63z"/></svg>Share with</span>
+<a target=_blank title="share to reddit" rel="noopener noreferrer" aria-label="share 高性能网关基石——OpenResty on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fblog.greycode.top%2fissues-blog%2fposts%2f15%2f&title=%e9%ab%98%e6%80%a7%e8%83%bd%e7%bd%91%e5%85%b3%e5%9f%ba%e7%9f%b3%e2%80%94%e2%80%94OpenResty"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512" fill="currentcolor" stroke="currentcolor" stroke-width="10"><path d="M324 256a36 36 0 1036 36 36 36 0 00-36-36z"/><circle cx="188" cy="292" r="36" transform="rotate(-22.5 187.997 291.992)"/><path d="M496 253.77c0-31.19-25.14-56.56-56-56.56a55.72 55.72.0 00-35.61 12.86c-35-23.77-80.78-38.32-129.65-41.27l22-79 66.41 13.2c1.9 26.48 24 47.49 50.65 47.49 28 0 50.78-23 50.78-51.21S441 48 413 48c-19.53.0-36.31 11.19-44.85 28.77l-90-17.89-31.1 109.52-4.63.13c-50.63 2.21-98.34 16.93-134.77 41.53A55.38 55.38.0 0072 197.21c-30.89.0-56 25.37-56 56.56a56.43 56.43.0 0028.11 49.06 98.65 98.65.0 00-.89 13.34c.11 39.74 22.49 77 63 105C146.36 448.77 199.51 464 256 464s109.76-15.23 149.83-42.89c40.53-28 62.85-65.27 62.85-105.06a109.32 109.32.0 00-.84-13.3A56.32 56.32.0 00496 253.77zM414 75a24 24 0 11-24 24 24 24 0 0124-24zM42.72 253.77a29.6 29.6.0 0129.42-29.71 29 29 0 0113.62 3.43c-15.5 14.41-26.93 30.41-34.07 47.68a30.23 30.23.0 01-8.97-21.4zM390.82 399c-35.74 24.59-83.6 38.14-134.77 38.14S157 423.61 121.29 399c-33-22.79-51.24-52.26-51.24-83A78.5 78.5.0 0175 288.72c5.68-15.74 16.16-30.48 31.15-43.79a155.17 155.17.0 0114.76-11.53l.3-.21.24-.17c35.72-24.52 83.52-38 134.61-38s98.9 13.51 134.62 38l.23.17.34.25A156.57 156.57.0 01406 244.92c15 13.32 25.48 28.05 31.16 43.81a85.44 85.44.0 014.31 17.67 77.29 77.29.0 01.6 9.65c-.01 30.72-18.21 60.19-51.25 82.95zm69.6-123.92c-7.13-17.28-18.56-33.29-34.07-47.72A29.09 29.09.0 01440 224a29.59 29.59.0 0129.41 29.71 30.07 30.07.0 01-8.99 21.39z"/><path d="M323.23 362.22c-.25.25-25.56 26.07-67.15 26.27-42-.2-66.28-25.23-67.31-26.27a4.14 4.14.0 00-5.83.0l-13.7 13.47a4.15 4.15.0 000 5.89c3.4 3.4 34.7 34.23 86.78 34.45 51.94-.22 83.38-31.05 86.78-34.45a4.16 4.16.0 000-5.9l-13.71-13.47a4.13 4.13.0 00-5.81.0z"/></svg></a><a target=_blank title="share to twitter" rel="noopener noreferrer" aria-label="share 高性能网关基石——OpenResty on twitter" href="https://twitter.com/intent/tweet/?text=%e9%ab%98%e6%80%a7%e8%83%bd%e7%bd%91%e5%85%b3%e5%9f%ba%e7%9f%b3%e2%80%94%e2%80%94OpenResty&url=https%3a%2f%2fblog.greycode.top%2fissues-blog%2fposts%2f15%2f&hashtags="><svg class="ionicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill:none" stroke="currentcolor" stroke-width="2"><path d="M23 3a10.9 10.9.0 01-3.14 1.53 4.48 4.48.0 00-7.86 3v1A10.66 10.66.0 013 4s-4 9 5 13a11.64 11.64.0 01-7 2c9 5 20 0 20-11.5a4.5 4.5.0 00-.08-.83A7.72 7.72.0 0023 3z"/></svg></a><a target=_blank title="share to facebook" rel="noopener noreferrer" aria-label="share 高性能网关基石——OpenResty on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.greycode.top%2fissues-blog%2fposts%2f15%2f"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 24 24" style="fill:none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a></div></div></div></main><footer id=footer><div class="container has-padding is-flex"><ul class=links><li><a class="nav-link navbar-button" href=https://blog.greycode.top/issues-blog/index.xml type=application/rss+xml>RSS</a></li><li><a rel=nofollow target=_blank href=https://github.com/wayjam/hugo-theme-fluency title="using Hugo theme fluency">Theme Fluency</a></li><li><a rel=nofollow target=_blank href=https://gohugo.io title="Built with hugo">Built with Hugo</a></li></ul><div class=copyright>&copy; 2023 Issues Blog</div></div></footer><script>window.FluencyCopyIcon=`
+
+
+
+
+
+
+\u003csvg xmlns=\u0027http://www.w3.org/2000/svg\u0027 class=\u0027ionicon\u0027 viewBox=\u00270 0 512 512\u0027\u003e\u003crect x=\u0027128\u0027 y=\u0027128\u0027 width=\u0027336\u0027 height=\u0027336\u0027 rx=\u002757\u0027 ry=\u002757\u0027 stroke-linejoin=\u0027round\u0027 class=\u0027ionicon-fill-none ionicon-stroke-width\u0027/\u003e\u003cpath d=\u0027M383.5 128l.5-24a56.16 56.16 0 00-56-56H112a64.19 64.19 0 00-64 64v216a56.16 56.16 0 0056 56h24\u0027 stroke-linecap=\u0027round\u0027 stroke-linejoin=\u0027round\u0027 class=\u0027ionicon-fill-none ionicon-stroke-width\u0027/\u003e\u003c/svg\u003e
+
+
+
+
+
+
+
+
+
+
+`</script><script defer src=https://blog.greycode.top/issues-blog/js/main.min.22edf5bac5dfa68a0215a42702e2a71503d57bedadc157af46b990895734f033.js integrity="sha256-Iu31usXfpooCFaQnAuKnFQPVe+2twVevRrmQiVc08DM=" crossorigin=anonymous async></script><noscript><style type=text/css>#theme-selector-button{display:none}</style></noscript></body></html>

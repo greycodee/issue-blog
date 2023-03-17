@@ -1,72 +1,95 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="## 方法1: [推荐] 源码编译安装去下载页面下载源码包,然后执行下面的命令进行解压,编译和安装shelltar -xvf openresty-VERSION.tar.gzcd openresty-VERSION/./configure -j2make -j2sudo make install# better also add the following line to your ~/.bashrc or ~/.bash_profile file.export PATH=/usr/local/openresty/bin:$PATH## 方法2: 在 ArchLinux 安装在官方预编译包列表中，没有编译 ArchLinux 的包，所以我们可以直接使用 yay 包管理器来安装，可以看AUR地址首先要在电脑上安装 yay 包管理器，然后执行下面的命令进行安装：shellyay -S openresty等命令执行完，按提示在你的环境变量文件中添加 OpenResty 的安装路径，就添加下面这一行到你的环境变量配置文件中shellexport PATH=/opt/openresty/bin:$PATH然后激活一下环境变量，就安装成功了## OpenResty 命令介绍shell╰─$ sudo openresty -h[sudo] password for zheng:nginx version: openresty/1."><title>OpenResty 安装入门教程</title><link rel="shortcut icon" type=image/x-icon href=/issues-blog/><link rel=stylesheet href=/issues-blog/css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css integrity="sha512-6+FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ=="></head><body a=auto><main class=page-content aria-label=Content><div class=w><a href=/>..</a><article><p class=post-meta><time datetime="2023-03-17 14:58:24 +0800 +0800">2023-03-17</time></p><h1>OpenResty 安装入门教程</h1><p>## 方法1: [推荐] 源码编译安装
-去<a href=https://openresty.org/en/download.html#source-code-releases>下载页面</a>下载源码包,然后执行下面的命令进行解压,编译和安装
-<code>shell
-tar -xvf openresty-VERSION.tar.gz
-cd openresty-VERSION/
-./configure -j2
-make -j2
-sudo make install
-# better also add the following line to your ~/.bashrc or ~/.bash_profile file.
-export PATH=/usr/local/openresty/bin:$PATH</code>
-## 方法2: 在 ArchLinux 安装
-在<a href=https://openresty.org/cn/linux-packages.html>官方预编译包</a>列表中，没有编译 ArchLinux 的包，所以我们可以直接使用 <code>yay</code> 包管理器来安装，可以看<a href=https://aur.archlinux.org/packages/openresty>AUR地址</a>
-首先要在电脑上安装 <code>yay</code> 包管理器，然后执行下面的命令进行安装：
-<code>shell
-yay -S openresty</code>
-等命令执行完，按提示在你的环境变量文件中添加 OpenResty 的安装路径，就添加下面这一行到你的环境变量配置文件中
-<code>shell
-export PATH=/opt/openresty/bin:$PATH</code>
-然后激活一下环境变量，就安装成功了
-## OpenResty 命令介绍
-<code>shell
-╰─$ sudo openresty -h
-[sudo] password for zheng:
-nginx version: openresty/1.21.4.1
-Usage: nginx [-?hvVtTq] [-s signal] [-p prefix]
-[-e filename] [-c filename] [-g directives]
-Options:
--?,-h : this help
--v : show version and exit
--V : show version and configure options then exit
--t : test configuration and exit
--T : test configuration, dump it and exit
--q : suppress non-error messages during configuration testing
--s signal : send signal to a master process: stop, quit, reopen, reload
--p prefix : set prefix path (default: /opt/openresty/nginx/)
--e filename : set error log file (default: logs/error.log)
--c filename : set configuration file (default: /opt/openresty/nginx/conf/nginx.conf)
--g directives : set global directives out of configuration file</code>
-Google 翻译版：
-<code>shell
-╰─$ sudo openresty -h
-[sudo] zheng 的密码：
-nginx版本：openresty/1.21.4.1
-用法：nginx [-?hvVtTq] [-s 信号] [-p 前缀]
-[-e 文件名] [-c 文件名] [-g 指令]
-选项：
--?,-h : 这有帮助
--v : 显示版本并退出
--V ：显示版本和配置选项然后退出
--t ：测试配置并退出
--T ：测试配置，转储并退出
--q ：在配置测试期间抑制非错误消息
--s signal：向主进程发送信号：停止、退出、重新打开、重新加载
--p prefix : 设置前缀路径（默认：/opt/openresty/nginx/）
--e 文件名：设置错误日志文件（默认：logs/error.log）
--c filename : 设置配置文件（默认：/opt/openresty/nginx/conf/nginx.conf）
--g 指令：从配置文件中设置全局指令</code>
-## 起停命令
-- 启动
-<code>shell
-# 使用默认配置文件启动
-sudo openresty
-# 指定配置文件(pwd表示当前目录)
-sudo openresty -c `pwd`/conf/nginx.conf
-# 指定工作openresty的工作空间(会自动寻找该工作空间文件夹下的conf/nginx.conf配置)
-sudo openresty -p `pwd`</code>
-- 停止
-<code>shell
-# 默认配置文件启动的停止
-sudo openresty -s stop
-# 在启动时指定了 -p ，在发送结束指令时也要指定 -p
-sudo openresty -p `pwd` -s stop</code></p></article></div></main></body></html>
+<!doctype html><html lang=en-us prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"><head lang=en-us><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><meta name=HandheldFriendly content="True"><meta name=MobileOptimized content="320"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="dark light"><meta name=description content="方法1: [推荐] 源码编译安装 去下载页面下载源码包,然后执行下面的命令进行解压,编译和安装
+tar -xvf openresty-VERSION.tar.gz cd openresty-VERSION/ ./configure -j2 make -j2 sudo make install # better also add the following line to your ~/.bashrc or ~/.bash_profile file. export PATH=/usr/local/openresty/bin:$PATH 方法2: 在 ArchLinux 安装 在官方预编译包列表中，没有编译 ArchLinux 的包，所以我们可以直接使用 yay 包管理器来安装，可以看AUR地址 首先要在电脑上安装 yay 包管理器，然后执行下面的命令进行安装：
+yay -S openresty 等命令执行完，按提示在你的环境变量文件中添加 OpenResty 的安装路径，就添加下面这一行到你的环境变量配置文件中
+export PATH=/opt/openresty/bin:$PATH 然后激活一下环境变量，就安装成功了
+OpenResty 命令介绍 ╰─$ sudo openresty -h [sudo] password for zheng: nginx version: openresty/1.21.4.1 Usage: nginx [-?hvVtTq] [-s signal] [-p prefix] [-e filename] [-c filename] [-g directives] Options: -?"><meta name=author content><meta name=keywords content><title>OpenResty 安装入门教程 | Issues Blog</title><link rel=canonical href=https://blog.greycode.top/issues-blog/posts/8/><meta property="og:type" content="article"><meta property="og:description" content="方法1: [推荐] 源码编译安装 去下载页面下载源码包,然后执行下面的命令进行解压,编译和安装
+tar -xvf openresty-VERSION.tar.gz cd openresty-VERSION/ ./configure -j2 make -j2 sudo make install # better also add the following line to your ~/.bashrc or ~/.bash_profile file. export PATH=/usr/local/openresty/bin:$PATH 方法2: 在 ArchLinux 安装 在官方预编译包列表中，没有编译 ArchLinux 的包，所以我们可以直接使用 yay 包管理器来安装，可以看AUR地址 首先要在电脑上安装 yay 包管理器，然后执行下面的命令进行安装：
+yay -S openresty 等命令执行完，按提示在你的环境变量文件中添加 OpenResty 的安装路径，就添加下面这一行到你的环境变量配置文件中
+export PATH=/opt/openresty/bin:$PATH 然后激活一下环境变量，就安装成功了
+OpenResty 命令介绍 ╰─$ sudo openresty -h [sudo] password for zheng: nginx version: openresty/1.21.4.1 Usage: nginx [-?hvVtTq] [-s signal] [-p prefix] [-e filename] [-c filename] [-g directives] Options: -?"><meta property="og:title" content="OpenResty 安装入门教程"><meta property="og:site_name" content="Issues Blog"><meta property="og:image:type" content="image/jpeg"><meta property="og:url" content="https://blog.greycode.top/issues-blog/posts/8/"><meta property="og:locale" content="en-us"><meta property="article:published_time" content="2023-03-17"><meta property="article:modified_time" content="2023-03-17"><meta name=twitter:card content="summary"><meta name=twitter:title content="OpenResty 安装入门教程 | Issues Blog"><meta name=twitter:description content="方法1: [推荐] 源码编译安装 去下载页面下载源码包,然后执行下面的命令进行解压,编译和安装
+tar -xvf openresty-VERSION.tar.gz cd openresty-VERSION/ ./configure -j2 make -j2 sudo make install # better also add the following line to your ~/.bashrc or ~/.bash_profile file. export PATH=/usr/local/openresty/bin:$PATH 方法2: 在 ArchLinux 安装 在官方预编译包列表中，没有编译 ArchLinux 的包，所以我们可以直接使用 yay 包管理器来安装，可以看AUR地址 首先要在电脑上安装 yay 包管理器，然后执行下面的命令进行安装：
+yay -S openresty 等命令执行完，按提示在你的环境变量文件中添加 OpenResty 的安装路径，就添加下面这一行到你的环境变量配置文件中
+export PATH=/opt/openresty/bin:$PATH 然后激活一下环境变量，就安装成功了
+OpenResty 命令介绍 ╰─$ sudo openresty -h [sudo] password for zheng: nginx version: openresty/1.21.4.1 Usage: nginx [-?hvVtTq] [-s signal] [-p prefix] [-e filename] [-c filename] [-g directives] Options: -?"><meta name=twitter:domain content="https://blog.greycode.top/issues-blog/posts/8/"><link rel=icon href=https://blog.greycode.top/issues-blog/favicon.ico><link rel=stylesheet href=//cdn.jsdelivr.net/npm/modern-normalize@1.0.0/modern-normalize.min.css><link rel=stylesheet href=https://blog.greycode.top/issues-blog/style.min.ac3c47b4dc9a506af60a9bd3f8351fd882635c7e326aa3a64223fe59caf9a852.css integrity="sha256-rDxHtNyaUGr2CpvT+DUf2IJjXH4yaqOmQiP+Wcr5qFI=" rel="preload stylesheet" as=style></head><body><script>const currentTheme=window.localStorage.getItem("theme");currentTheme==="dark"?document.body.classList.toggle("theme-dark"):currentTheme=="light"&&document.body.classList.toggle("theme-light")</script><header id=header><div class=row><div class="container has-padding nav"><button id=navbar-toggler class=navbar-button aria-hidden=true><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M64 384h384v-42.67H64zm0-106.67h384v-42.66H64zM64 128v42.67h384V128z"/></svg></button><div class=navbar-brand><a class="logo navbar-button" href=https://blog.greycode.top/issues-blog/ title="Issues Blog"><span>Issues Blog</span></a></div><nav class=navbar role=navigation><ul></ul></nav><div class=theme-selector><button class="button is-text" id=theme-selector-button title="toggle theme">
+<span class="label icon"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M256 32C132.29 32 32 132.29 32 256s100.29 224 224 224 224-100.29 224-224S379.71 32 256 32zM128.72 383.28A180 180 0 01256 76v360a178.82 178.82.0 01-127.28-52.72z"/></svg></span></button></div></div><div class="container has-padding"><div class=breadcrumb><ol class=breadcrumb-nav><li><a href=https://blog.greycode.top/issues-blog/>Home</a></li><li><a href=https://blog.greycode.top/issues-blog/posts/>Posts</a></li><li class=active><a href=https://blog.greycode.top/issues-blog/posts/8/>OpenResty 安装入门教程</a></li></ol></div></div></div></header><main id=main><div class="container has-padding"><div class="article-card post single"><h1 class=title>OpenResty 安装入门教程</h1><div class=post-info><span><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M32 456a24 24 0 0024 24h4e2a24 24 0 0024-24V176H32zm320-244a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm-80-80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm-80-80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm-80-80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zM456 64h-55.92V32h-48v32H159.92V32h-48v32H56A23.8 23.8.0 0032 87.77V144h448V87.77A23.8 23.8.0 00456 64z"/></svg><time datetime=2023-03-17T14:58:24+0800 class=date>March 17, 2023</time></span>
+<span><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M256 48C141.13 48 48 141.13 48 256c0 114.69 93.32 208 208 208 114.86.0 208-93.14 208-208 0-114.69-93.31-208-208-208zm108 240H244a4 4 0 01-4-4V116a4 4 0 014-4h24a4 4 0 014 4v140h92a4 4 0 014 4v24a4 4 0 01-4 4z"/></svg>2 mins to read</span>
+<span>posts</span></div><article class="post-entry content"><h2 id=方法1-推荐-源码编译安装>方法1: [推荐] 源码编译安装</h2><p>去<a href=https://openresty.org/en/download.html#source-code-releases>下载页面</a>下载源码包,然后执行下面的命令进行解压,编译和安装</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>tar -xvf openresty-VERSION.tar.gz
+</span></span><span style=display:flex><span>cd openresty-VERSION/
+</span></span><span style=display:flex><span>./configure -j2
+</span></span><span style=display:flex><span>make -j2
+</span></span><span style=display:flex><span>sudo make install
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># better also add the following line to your ~/.bashrc or ~/.bash_profile file.</span>
+</span></span><span style=display:flex><span>export PATH<span style=color:#f92672>=</span>/usr/local/openresty/bin:$PATH
+</span></span></code></pre></div><h2 id=方法2-在-archlinux-安装>方法2: 在 ArchLinux 安装</h2><p>在<a href=https://openresty.org/cn/linux-packages.html>官方预编译包</a>列表中，没有编译 ArchLinux 的包，所以我们可以直接使用 <code>yay</code> 包管理器来安装，可以看<a href=https://aur.archlinux.org/packages/openresty>AUR地址</a>
+首先要在电脑上安装 <code>yay</code> 包管理器，然后执行下面的命令进行安装：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>yay -S openresty
+</span></span></code></pre></div><p>等命令执行完，按提示在你的环境变量文件中添加 OpenResty 的安装路径，就添加下面这一行到你的环境变量配置文件中</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>export PATH<span style=color:#f92672>=</span>/opt/openresty/bin:$PATH
+</span></span></code></pre></div><p>然后激活一下环境变量，就安装成功了</p><h2 id=openresty-命令介绍>OpenResty 命令介绍</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>╰─$ sudo openresty -h
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>sudo<span style=color:#f92672>]</span> password <span style=color:#66d9ef>for</span> zheng:
+</span></span><span style=display:flex><span>nginx version: openresty/1.21.4.1
+</span></span><span style=display:flex><span>Usage: nginx <span style=color:#f92672>[</span>-?hvVtTq<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-s signal<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-p prefix<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>-e filename<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-c filename<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-g directives<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Options:
+</span></span><span style=display:flex><span>-?,-h : this help
+</span></span><span style=display:flex><span>-v : show version and exit
+</span></span><span style=display:flex><span>-V : show version and configure options <span style=color:#66d9ef>then</span> exit
+</span></span><span style=display:flex><span>-t : test configuration and exit
+</span></span><span style=display:flex><span>-T : test configuration, dump it and exit
+</span></span><span style=display:flex><span>-q : suppress non-error messages during configuration testing
+</span></span><span style=display:flex><span>-s signal : send signal to a master process: stop, quit, reopen, reload
+</span></span><span style=display:flex><span>-p prefix : set prefix path <span style=color:#f92672>(</span>default: /opt/openresty/nginx/<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>-e filename : set error log file <span style=color:#f92672>(</span>default: logs/error.log<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>-c filename : set configuration file <span style=color:#f92672>(</span>default: /opt/openresty/nginx/conf/nginx.conf<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>-g directives : set global directives out of configuration file
+</span></span></code></pre></div><p>Google 翻译版：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>╰─$ sudo openresty -h
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>sudo<span style=color:#f92672>]</span> zheng 的密码：
+</span></span><span style=display:flex><span>nginx版本：openresty/1.21.4.1
+</span></span><span style=display:flex><span>用法：nginx <span style=color:#f92672>[</span>-?hvVtTq<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-s 信号<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-p 前缀<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>-e 文件名<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-c 文件名<span style=color:#f92672>]</span> <span style=color:#f92672>[</span>-g 指令<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>选项：
+</span></span><span style=display:flex><span>-?,-h : 这有帮助
+</span></span><span style=display:flex><span>-v : 显示版本并退出
+</span></span><span style=display:flex><span>-V ：显示版本和配置选项然后退出
+</span></span><span style=display:flex><span>-t ：测试配置并退出
+</span></span><span style=display:flex><span>-T ：测试配置，转储并退出
+</span></span><span style=display:flex><span>-q ：在配置测试期间抑制非错误消息
+</span></span><span style=display:flex><span>-s signal：向主进程发送信号：停止、退出、重新打开、重新加载
+</span></span><span style=display:flex><span>-p prefix : 设置前缀路径（默认：/opt/openresty/nginx/）
+</span></span><span style=display:flex><span>-e 文件名：设置错误日志文件（默认：logs/error.log）
+</span></span><span style=display:flex><span>-c filename : 设置配置文件（默认：/opt/openresty/nginx/conf/nginx.conf）
+</span></span><span style=display:flex><span>-g 指令：从配置文件中设置全局指令
+</span></span></code></pre></div><h2 id=起停命令>起停命令</h2><ul><li>启动</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># 使用默认配置文件启动</span>
+</span></span><span style=display:flex><span>sudo openresty
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 指定配置文件(pwd表示当前目录)</span>
+</span></span><span style=display:flex><span>sudo openresty -c <span style=color:#e6db74>`</span>pwd<span style=color:#e6db74>`</span>/conf/nginx.conf
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 指定工作openresty的工作空间(会自动寻找该工作空间文件夹下的conf/nginx.conf配置)</span>
+</span></span><span style=display:flex><span>sudo openresty -p <span style=color:#e6db74>`</span>pwd<span style=color:#e6db74>`</span>
+</span></span></code></pre></div><ul><li>停止</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># 默认配置文件启动的停止</span>
+</span></span><span style=display:flex><span>sudo openresty -s stop
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 在启动时指定了 -p ，在发送结束指令时也要指定 -p </span>
+</span></span><span style=display:flex><span>sudo openresty -p <span style=color:#e6db74>`</span>pwd<span style=color:#e6db74>`</span> -s stop
+</span></span></code></pre></div></article></div><div class="meta article-card"><div class=row><span class=label><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M32 456a24 24 0 0024 24h4e2a24 24 0 0024-24V176H32zm320-244a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm-80-80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm-80-80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm-80-80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zM456 64h-55.92V32h-48v32H159.92V32h-48v32H56A23.8 23.8.0 0032 87.77V144h448V87.77A23.8 23.8.0 00456 64z"/></svg>Published At</span><time>2023-03-17 06:58 UTC</time></div><div class="row social-share"><span class=label><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M272 176v161h-32V176H92a12 12 0 00-12 12v280a12 12 0 0012 12h328a12 12 0 0012-12V188a12 12 0 00-12-12zm0-83.37 64 64L358.63 134 256 31.37 153.37 134 176 156.63l64-64V176h32V92.63z"/></svg>Share with</span>
+<a target=_blank title="share to reddit" rel="noopener noreferrer" aria-label="share OpenResty 安装入门教程 on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fblog.greycode.top%2fissues-blog%2fposts%2f8%2f&title=OpenResty%20%e5%ae%89%e8%a3%85%e5%85%a5%e9%97%a8%e6%95%99%e7%a8%8b"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512" fill="currentcolor" stroke="currentcolor" stroke-width="10"><path d="M324 256a36 36 0 1036 36 36 36 0 00-36-36z"/><circle cx="188" cy="292" r="36" transform="rotate(-22.5 187.997 291.992)"/><path d="M496 253.77c0-31.19-25.14-56.56-56-56.56a55.72 55.72.0 00-35.61 12.86c-35-23.77-80.78-38.32-129.65-41.27l22-79 66.41 13.2c1.9 26.48 24 47.49 50.65 47.49 28 0 50.78-23 50.78-51.21S441 48 413 48c-19.53.0-36.31 11.19-44.85 28.77l-90-17.89-31.1 109.52-4.63.13c-50.63 2.21-98.34 16.93-134.77 41.53A55.38 55.38.0 0072 197.21c-30.89.0-56 25.37-56 56.56a56.43 56.43.0 0028.11 49.06 98.65 98.65.0 00-.89 13.34c.11 39.74 22.49 77 63 105C146.36 448.77 199.51 464 256 464s109.76-15.23 149.83-42.89c40.53-28 62.85-65.27 62.85-105.06a109.32 109.32.0 00-.84-13.3A56.32 56.32.0 00496 253.77zM414 75a24 24 0 11-24 24 24 24 0 0124-24zM42.72 253.77a29.6 29.6.0 0129.42-29.71 29 29 0 0113.62 3.43c-15.5 14.41-26.93 30.41-34.07 47.68a30.23 30.23.0 01-8.97-21.4zM390.82 399c-35.74 24.59-83.6 38.14-134.77 38.14S157 423.61 121.29 399c-33-22.79-51.24-52.26-51.24-83A78.5 78.5.0 0175 288.72c5.68-15.74 16.16-30.48 31.15-43.79a155.17 155.17.0 0114.76-11.53l.3-.21.24-.17c35.72-24.52 83.52-38 134.61-38s98.9 13.51 134.62 38l.23.17.34.25A156.57 156.57.0 01406 244.92c15 13.32 25.48 28.05 31.16 43.81a85.44 85.44.0 014.31 17.67 77.29 77.29.0 01.6 9.65c-.01 30.72-18.21 60.19-51.25 82.95zm69.6-123.92c-7.13-17.28-18.56-33.29-34.07-47.72A29.09 29.09.0 01440 224a29.59 29.59.0 0129.41 29.71 30.07 30.07.0 01-8.99 21.39z"/><path d="M323.23 362.22c-.25.25-25.56 26.07-67.15 26.27-42-.2-66.28-25.23-67.31-26.27a4.14 4.14.0 00-5.83.0l-13.7 13.47a4.15 4.15.0 000 5.89c3.4 3.4 34.7 34.23 86.78 34.45 51.94-.22 83.38-31.05 86.78-34.45a4.16 4.16.0 000-5.9l-13.71-13.47a4.13 4.13.0 00-5.81.0z"/></svg></a><a target=_blank title="share to twitter" rel="noopener noreferrer" aria-label="share OpenResty 安装入门教程 on twitter" href="https://twitter.com/intent/tweet/?text=OpenResty%20%e5%ae%89%e8%a3%85%e5%85%a5%e9%97%a8%e6%95%99%e7%a8%8b&url=https%3a%2f%2fblog.greycode.top%2fissues-blog%2fposts%2f8%2f&hashtags="><svg class="ionicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill:none" stroke="currentcolor" stroke-width="2"><path d="M23 3a10.9 10.9.0 01-3.14 1.53 4.48 4.48.0 00-7.86 3v1A10.66 10.66.0 013 4s-4 9 5 13a11.64 11.64.0 01-7 2c9 5 20 0 20-11.5a4.5 4.5.0 00-.08-.83A7.72 7.72.0 0023 3z"/></svg></a><a target=_blank title="share to facebook" rel="noopener noreferrer" aria-label="share OpenResty 安装入门教程 on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.greycode.top%2fissues-blog%2fposts%2f8%2f"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 24 24" style="fill:none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a></div></div></div></main><footer id=footer><div class="container has-padding is-flex"><ul class=links><li><a class="nav-link navbar-button" href=https://blog.greycode.top/issues-blog/index.xml type=application/rss+xml>RSS</a></li><li><a rel=nofollow target=_blank href=https://github.com/wayjam/hugo-theme-fluency title="using Hugo theme fluency">Theme Fluency</a></li><li><a rel=nofollow target=_blank href=https://gohugo.io title="Built with hugo">Built with Hugo</a></li></ul><div class=copyright>&copy; 2023 Issues Blog</div></div></footer><script>window.FluencyCopyIcon=`
+
+
+
+
+
+
+\u003csvg xmlns=\u0027http://www.w3.org/2000/svg\u0027 class=\u0027ionicon\u0027 viewBox=\u00270 0 512 512\u0027\u003e\u003crect x=\u0027128\u0027 y=\u0027128\u0027 width=\u0027336\u0027 height=\u0027336\u0027 rx=\u002757\u0027 ry=\u002757\u0027 stroke-linejoin=\u0027round\u0027 class=\u0027ionicon-fill-none ionicon-stroke-width\u0027/\u003e\u003cpath d=\u0027M383.5 128l.5-24a56.16 56.16 0 00-56-56H112a64.19 64.19 0 00-64 64v216a56.16 56.16 0 0056 56h24\u0027 stroke-linecap=\u0027round\u0027 stroke-linejoin=\u0027round\u0027 class=\u0027ionicon-fill-none ionicon-stroke-width\u0027/\u003e\u003c/svg\u003e
+
+
+
+
+
+
+
+
+
+
+`</script><script defer src=https://blog.greycode.top/issues-blog/js/main.min.22edf5bac5dfa68a0215a42702e2a71503d57bedadc157af46b990895734f033.js integrity="sha256-Iu31usXfpooCFaQnAuKnFQPVe+2twVevRrmQiVc08DM=" crossorigin=anonymous async></script><noscript><style type=text/css>#theme-selector-button{display:none}</style></noscript></body></html>

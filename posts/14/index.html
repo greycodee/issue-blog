@@ -1,72 +1,103 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="原因系统: ArchLinux终端shell: zsh在安装 anaconda 后，激活环境后，zsh终端的主题就会失效shell╭─zheng@zhengArch ~╰─$ conda activate base(base)终端只剩下 conda 的环境名，当我退出 conda 环境是，zsh 主题还是不能恢复，必须重启终端才可以退出环境：shell╭─zheng@zhengArch ~╰─$ conda activate base(base) conda deactivatepwd/home/zheng## 解决方法执行如下命令可以解决shellconda config --set changeps1 False参考资料:- conda.io- stackoverflow&mdash;## 美化 oh-my-zsh 主题可以在 oh-my-zsh 主题配置文件里使用如下函数来获取当前 conda 环境名lua# Conda infolocal conda_info='$(conda_prompt_info)'conda_prompt_info() {if [ -n &#34;$CONDA_DEFAULT_ENV&#34; ]; thenecho -n &#34;($CONDA_DEFAULT_ENV) &#34;elseecho -n &#34;&#34;fi}bira."><title>电脑安装 anaconda 后，激活环境导致 zsh 主题失效解决方法</title><link rel="shortcut icon" type=image/x-icon href=/issues-blog/><link rel=stylesheet href=/issues-blog/css/main.ebe15b0394daa6798b8a40aa572a71b5a7a1beb8cc02c392f5c142e7d08ddb6052e049639385106440b538f394884685082b7441eef27a6a8315ec723155dc15.css integrity="sha512-6+FbA5TapnmLikCqVypxtaehvrjMAsOS9cFC59CN22BS4Eljk4UQZEC1OPOUiEaFCCt0Qe7yemqDFexyMVXcFQ=="></head><body a=auto><main class=page-content aria-label=Content><div class=w><a href=/>..</a><article><p class=post-meta><time datetime="2023-03-17 14:58:23 +0800 +0800">2023-03-17</time></p><h1>电脑安装 anaconda 后，激活环境导致 zsh 主题失效解决方法</h1><h2 id=原因-系统-archlinux-终端shell-zsh-在安装-anaconda-后激活环境后zsh终端的主题就会失效-shell-zhengzhengarch---conda-activate-base-base--终端只剩下-conda-的环境名当我退出-conda-环境是zsh-主题还是不能恢复必须重启终端才可以-退出环境-shell-zhengzhengarch---conda-activate-base-base-conda-deactivate-pwd-homezheng----解决方法-执行如下命令可以解决-shell-conda-config---set-changeps1-false---参考资料---condaiohttpscondaioprojectscondaenlatestuser-guideconfigurationuse-condarchtmlchange-command-prompt-changeps1---stackoverflowhttpsstackoverflowcomquestions42481726how-to-modify-conda-source-activate-ps1-behavior--------美化-oh-my-zsh-主题-可以在-oh-my-zsh-主题配置文件里使用如下函数来获取当前-conda-环境名-lua--conda-info-local-conda_infoconda_prompt_info-conda_prompt_info--if---n-conda_default_env--then-echo--n-conda_default_env--else-echo--n--fi---birazsh-theme-主题文件全貌-lua-local-return_codefgred-reset_color-local-user_hostbfgredfggreennmreset_color--local-user_symbol-local-current_dirbfgblue-reset_color--local-vcs_branchgit_prompt_infohg_prompt_info-local-rvm_rubyruby_prompt_info-local-venv_promptvirtualenv_prompt_info--zsh_theme_rvm_prompt_optionsi-v-g----conda-info-local-conda_infoconda_prompt_info-conda_prompt_info--if---n-conda_default_env--then-echo--n-conda_default_env--else-echo--n--fi----promptuser_hostconda_infocurrent_dirrvm_rubyvcs_branchvenv_prompt-buser_symbolb--rpromptbreturn_codeb--zsh_theme_git_prompt_prefixfgyellow-zsh_theme_git_prompt_suffix-reset_color-zsh_theme_git_prompt_dirtyfgredfgyellow-zsh_theme_git_prompt_cleanfgyellow--zsh_theme_hg_prompt_prefixzsh_theme_git_prompt_prefix-zsh_theme_hg_prompt_suffixzsh_theme_git_prompt_suffix-zsh_theme_hg_prompt_dirtyzsh_theme_git_prompt_dirty-zsh_theme_hg_prompt_cleanzsh_theme_git_prompt_clean--zsh_theme_ruby_prompt_prefixfgred-zsh_theme_ruby_prompt_suffix-reset_color--zsh_theme_virtual_env_prompt_prefixfggreen-zsh_theme_virtual_env_prompt_suffix-reset_color-zsh_theme_virtualenv_prefixzsh_theme_virtual_env_prompt_prefix-zsh_theme_virtualenv_suffixzsh_theme_virtual_env_prompt_suffix->原因
-系统: ArchLinux
+<!doctype html><html lang=en-us prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"><head lang=en-us><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><meta name=HandheldFriendly content="True"><meta name=MobileOptimized content="320"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="dark light"><meta name=description content="原因 系统: ArchLinux 终端shell: zsh 在安装 anaconda 后，激活环境后，zsh终端的主题就会失效
+╭─zheng@zhengArch ~ ╰─$ conda activate base (base) 终端只剩下 conda 的环境名，当我退出 conda 环境是，zsh 主题还是不能恢复，必须重启终端才可以 退出环境：
+╭─zheng@zhengArch ~ ╰─$ conda activate base (base) conda deactivate pwd /home/zheng 解决方法 执行如下命令可以解决
+conda config --set changeps1 False 参考资料:
+conda.io stackoverflow 美化 oh-my-zsh 主题 可以在 oh-my-zsh 主题配置文件里使用如下函数来获取当前 conda 环境名
+# Conda info local conda_info='$(conda_prompt_info)' conda_prompt_info() { if [ -n &#34;$CONDA_DEFAULT_ENV&#34; ]; then echo -n &#34;($CONDA_DEFAULT_ENV) &#34; else echo -n &#34;&#34; fi } bira."><meta name=author content><meta name=keywords content><title>电脑安装 anaconda 后，激活环境导致 zsh 主题失效解决方法 | Issues Blog</title><link rel=canonical href=https://blog.greycode.top/issues-blog/posts/14/><meta property="og:type" content="article"><meta property="og:description" content="原因 系统: ArchLinux 终端shell: zsh 在安装 anaconda 后，激活环境后，zsh终端的主题就会失效
+╭─zheng@zhengArch ~ ╰─$ conda activate base (base) 终端只剩下 conda 的环境名，当我退出 conda 环境是，zsh 主题还是不能恢复，必须重启终端才可以 退出环境：
+╭─zheng@zhengArch ~ ╰─$ conda activate base (base) conda deactivate pwd /home/zheng 解决方法 执行如下命令可以解决
+conda config --set changeps1 False 参考资料:
+conda.io stackoverflow 美化 oh-my-zsh 主题 可以在 oh-my-zsh 主题配置文件里使用如下函数来获取当前 conda 环境名
+# Conda info local conda_info='$(conda_prompt_info)' conda_prompt_info() { if [ -n &#34;$CONDA_DEFAULT_ENV&#34; ]; then echo -n &#34;($CONDA_DEFAULT_ENV) &#34; else echo -n &#34;&#34; fi } bira."><meta property="og:title" content="电脑安装 anaconda 后，激活环境导致 zsh 主题失效解决方法"><meta property="og:site_name" content="Issues Blog"><meta property="og:image:type" content="image/jpeg"><meta property="og:url" content="https://blog.greycode.top/issues-blog/posts/14/"><meta property="og:locale" content="en-us"><meta property="article:published_time" content="2023-03-17"><meta property="article:modified_time" content="2023-03-17"><meta name=twitter:card content="summary"><meta name=twitter:title content="电脑安装 anaconda 后，激活环境导致 zsh 主题失效解决方法 | Issues Blog"><meta name=twitter:description content="原因 系统: ArchLinux 终端shell: zsh 在安装 anaconda 后，激活环境后，zsh终端的主题就会失效
+╭─zheng@zhengArch ~ ╰─$ conda activate base (base) 终端只剩下 conda 的环境名，当我退出 conda 环境是，zsh 主题还是不能恢复，必须重启终端才可以 退出环境：
+╭─zheng@zhengArch ~ ╰─$ conda activate base (base) conda deactivate pwd /home/zheng 解决方法 执行如下命令可以解决
+conda config --set changeps1 False 参考资料:
+conda.io stackoverflow 美化 oh-my-zsh 主题 可以在 oh-my-zsh 主题配置文件里使用如下函数来获取当前 conda 环境名
+# Conda info local conda_info='$(conda_prompt_info)' conda_prompt_info() { if [ -n &#34;$CONDA_DEFAULT_ENV&#34; ]; then echo -n &#34;($CONDA_DEFAULT_ENV) &#34; else echo -n &#34;&#34; fi } bira."><meta name=twitter:domain content="https://blog.greycode.top/issues-blog/posts/14/"><link rel=icon href=https://blog.greycode.top/issues-blog/favicon.ico><link rel=stylesheet href=//cdn.jsdelivr.net/npm/modern-normalize@1.0.0/modern-normalize.min.css><link rel=stylesheet href=https://blog.greycode.top/issues-blog/style.min.ac3c47b4dc9a506af60a9bd3f8351fd882635c7e326aa3a64223fe59caf9a852.css integrity="sha256-rDxHtNyaUGr2CpvT+DUf2IJjXH4yaqOmQiP+Wcr5qFI=" rel="preload stylesheet" as=style></head><body><script>const currentTheme=window.localStorage.getItem("theme");currentTheme==="dark"?document.body.classList.toggle("theme-dark"):currentTheme=="light"&&document.body.classList.toggle("theme-light")</script><header id=header><div class=row><div class="container has-padding nav"><button id=navbar-toggler class=navbar-button aria-hidden=true><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M64 384h384v-42.67H64zm0-106.67h384v-42.66H64zM64 128v42.67h384V128z"/></svg></button><div class=navbar-brand><a class="logo navbar-button" href=https://blog.greycode.top/issues-blog/ title="Issues Blog"><span>Issues Blog</span></a></div><nav class=navbar role=navigation><ul></ul></nav><div class=theme-selector><button class="button is-text" id=theme-selector-button title="toggle theme">
+<span class="label icon"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M256 32C132.29 32 32 132.29 32 256s100.29 224 224 224 224-100.29 224-224S379.71 32 256 32zM128.72 383.28A180 180 0 01256 76v360a178.82 178.82.0 01-127.28-52.72z"/></svg></span></button></div></div><div class="container has-padding"><div class=breadcrumb><ol class=breadcrumb-nav><li><a href=https://blog.greycode.top/issues-blog/>Home</a></li><li><a href=https://blog.greycode.top/issues-blog/posts/>Posts</a></li><li class=active><a href=https://blog.greycode.top/issues-blog/posts/14/>电脑安装 anaconda 后，激活环境导致 zsh 主题失效解决方法</a></li></ol></div></div></div></header><main id=main><div class="container has-padding"><div class="article-card post single"><h1 class=title>电脑安装 anaconda 后，激活环境导致 zsh 主题失效解决方法</h1><div class=post-info><span><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M32 456a24 24 0 0024 24h4e2a24 24 0 0024-24V176H32zm320-244a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm-80-80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm-80-80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm-80-80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zM456 64h-55.92V32h-48v32H159.92V32h-48v32H56A23.8 23.8.0 0032 87.77V144h448V87.77A23.8 23.8.0 00456 64z"/></svg><time datetime=2023-03-17T14:58:23+0800 class=date>March 17, 2023</time></span>
+<span><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M256 48C141.13 48 48 141.13 48 256c0 114.69 93.32 208 208 208 114.86.0 208-93.14 208-208 0-114.69-93.31-208-208-208zm108 240H244a4 4 0 01-4-4V116a4 4 0 014-4h24a4 4 0 014 4v140h92a4 4 0 014 4v24a4 4 0 01-4 4z"/></svg>a min to read</span>
+<span>posts</span></div><article class="post-entry content"><h2 id=原因>原因</h2><p>系统: ArchLinux
 终端shell: zsh
-在安装 anaconda 后，激活环境后，zsh终端的主题就会失效
-<code>shell
-╭─zheng@zhengArch ~
-╰─$ conda activate base
-(base)</code>
-终端只剩下 conda 的环境名，当我退出 conda 环境是，zsh 主题还是不能恢复，必须重启终端才可以
-退出环境：
-<code>shell
-╭─zheng@zhengArch ~
-╰─$ conda activate base
-(base) conda deactivate
-pwd
-/home/zheng</code>
-## 解决方法
-执行如下命令可以解决
-<code>shell
-conda config --set changeps1 False</code>
-参考资料:
-- <a href=https://conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html#change-command-prompt-changeps1>conda.io</a>
-- <a href=https://stackoverflow.com/questions/42481726/how-to-modify-conda-source-activate-ps1-behavior>stackoverflow</a>
-&mdash;
-## 美化 oh-my-zsh 主题
-可以在 oh-my-zsh 主题配置文件里使用如下函数来获取当前 conda 环境名
-<code>lua
-# Conda info
-local conda_info='$(conda_prompt_info)'
-conda_prompt_info() {
-if [ -n "$CONDA_DEFAULT_ENV" ]; then
-echo -n "($CONDA_DEFAULT_ENV) "
-else
-echo -n ""
-fi
-}</code>
-<strong>bira.zsh-theme 主题文件全貌</strong>:
-<code>lua
-local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
-local user_host="%B%(!.%{$fg[red]%}.%{$fg[green]%})%n@%m%{$reset_color%} "
-local user_symbol='%(!.#.$)'
-local current_dir="%B%{$fg[blue]%}%~ %{$reset_color%}"
-local vcs_branch='$(git_prompt_info)$(hg_prompt_info)'
-local rvm_ruby='$(ruby_prompt_info)'
-local venv_prompt='$(virtualenv_prompt_info)'
-ZSH_THEME_RVM_PROMPT_OPTIONS="i v g"
-# Conda info
-local conda_info='$(conda_prompt_info)'
-conda_prompt_info() {
-if [ -n "$CONDA_DEFAULT_ENV" ]; then
-echo -n "($CONDA_DEFAULT_ENV) "
-else
-echo -n ""
-fi
-}
-PROMPT="╭─${user_host}${conda_info}${current_dir}${rvm_ruby}${vcs_branch}${venv_prompt}
-╰─%B${user_symbol}%b "
-RPROMPT="%B${return_code}%b"
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}‹"
-ZSH_THEME_GIT_PROMPT_SUFFIX="› %{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[red]%}●%{$fg[yellow]%}"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[yellow]%}"
-ZSH_THEME_HG_PROMPT_PREFIX="$ZSH_THEME_GIT_PROMPT_PREFIX"
-ZSH_THEME_HG_PROMPT_SUFFIX="$ZSH_THEME_GIT_PROMPT_SUFFIX"
-ZSH_THEME_HG_PROMPT_DIRTY="$ZSH_THEME_GIT_PROMPT_DIRTY"
-ZSH_THEME_HG_PROMPT_CLEAN="$ZSH_THEME_GIT_PROMPT_CLEAN"
-ZSH_THEME_RUBY_PROMPT_PREFIX="%{$fg[red]%}‹"
-ZSH_THEME_RUBY_PROMPT_SUFFIX="› %{$reset_color%}"
-ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX="%{$fg[green]%}‹"
-ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX="› %{$reset_color%}"
-ZSH_THEME_VIRTUALENV_PREFIX="$ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX"
-ZSH_THEME_VIRTUALENV_SUFFIX="$ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX"</code></h2></article></div></main></body></html>
+在安装 anaconda 后，激活环境后，zsh终端的主题就会失效</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>╭─zheng@zhengArch ~
+</span></span><span style=display:flex><span>╰─$ conda activate base
+</span></span><span style=display:flex><span><span style=color:#f92672>(</span>base<span style=color:#f92672>)</span>
+</span></span></code></pre></div><p>终端只剩下 conda 的环境名，当我退出 conda 环境是，zsh 主题还是不能恢复，必须重启终端才可以
+退出环境：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>╭─zheng@zhengArch ~
+</span></span><span style=display:flex><span>╰─$ conda activate base
+</span></span><span style=display:flex><span><span style=color:#f92672>(</span>base<span style=color:#f92672>)</span> conda deactivate
+</span></span><span style=display:flex><span>pwd
+</span></span><span style=display:flex><span>/home/zheng
+</span></span></code></pre></div><h2 id=解决方法>解决方法</h2><p>执行如下命令可以解决</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>conda config --set changeps1 False
+</span></span></code></pre></div><p>参考资料:</p><ul><li><a href=https://conda.io/projects/conda/en/latest/user-guide/configuration/use-condarc.html#change-command-prompt-changeps1>conda.io</a></li><li><a href=https://stackoverflow.com/questions/42481726/how-to-modify-conda-source-activate-ps1-behavior>stackoverflow</a></li></ul><hr><h2 id=美化-oh-my-zsh-主题>美化 oh-my-zsh 主题</h2><p>可以在 oh-my-zsh 主题配置文件里使用如下函数来获取当前 conda 环境名</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-lua data-lang=lua><span style=display:flex><span><span style=color:#f92672>#</span> Conda info
+</span></span><span style=display:flex><span><span style=color:#66d9ef>local</span> conda_info<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;$(conda_prompt_info)&#39;</span>
+</span></span><span style=display:flex><span>conda_prompt_info() {
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> [ <span style=color:#f92672>-</span>n <span style=color:#e6db74>&#34;$CONDA_DEFAULT_ENV&#34;</span> ]; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>echo <span style=color:#f92672>-</span>n <span style=color:#e6db74>&#34;($CONDA_DEFAULT_ENV) &#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>echo <span style=color:#f92672>-</span>n <span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>fi
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p><strong>bira.zsh-theme 主题文件全貌</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-lua data-lang=lua><span style=display:flex><span><span style=color:#66d9ef>local</span> return_code<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;%(?..%{$fg[red]%}%? ↵%{$reset_color%})&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>local</span> user_host<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;%B%(!.%{$fg[red]%}.%{$fg[green]%})%n@%m%{$reset_color%} &#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>local</span> user_symbol<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;%(!.#.$)&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>local</span> current_dir<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;%B%{$fg[blue]%}%~ %{$reset_color%}&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>local</span> vcs_branch<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;$(git_prompt_info)$(hg_prompt_info)&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>local</span> rvm_ruby<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;$(ruby_prompt_info)&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>local</span> venv_prompt<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;$(virtualenv_prompt_info)&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>ZSH_THEME_RVM_PROMPT_OPTIONS<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;i v g&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>#</span> Conda info
+</span></span><span style=display:flex><span><span style=color:#66d9ef>local</span> conda_info<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;$(conda_prompt_info)&#39;</span>
+</span></span><span style=display:flex><span>conda_prompt_info() {
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> [ <span style=color:#f92672>-</span>n <span style=color:#e6db74>&#34;$CONDA_DEFAULT_ENV&#34;</span> ]; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>echo <span style=color:#f92672>-</span>n <span style=color:#e6db74>&#34;($CONDA_DEFAULT_ENV) &#34;</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>
+</span></span><span style=display:flex><span>echo <span style=color:#f92672>-</span>n <span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>fi
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>PROMPT<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;╭─${user_host}${conda_info}${current_dir}${rvm_ruby}${vcs_branch}${venv_prompt}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>╰─%B${user_symbol}%b &#34;</span>
+</span></span><span style=display:flex><span>RPROMPT<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;%B${return_code}%b&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>ZSH_THEME_GIT_PROMPT_PREFIX<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;%{$fg[yellow]%}‹&#34;</span>
+</span></span><span style=display:flex><span>ZSH_THEME_GIT_PROMPT_SUFFIX<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;› %{$reset_color%}&#34;</span>
+</span></span><span style=display:flex><span>ZSH_THEME_GIT_PROMPT_DIRTY<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;%{$fg[red]%}●%{$fg[yellow]%}&#34;</span>
+</span></span><span style=display:flex><span>ZSH_THEME_GIT_PROMPT_CLEAN<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;%{$fg[yellow]%}&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>ZSH_THEME_HG_PROMPT_PREFIX<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;$ZSH_THEME_GIT_PROMPT_PREFIX&#34;</span>
+</span></span><span style=display:flex><span>ZSH_THEME_HG_PROMPT_SUFFIX<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;$ZSH_THEME_GIT_PROMPT_SUFFIX&#34;</span>
+</span></span><span style=display:flex><span>ZSH_THEME_HG_PROMPT_DIRTY<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;$ZSH_THEME_GIT_PROMPT_DIRTY&#34;</span>
+</span></span><span style=display:flex><span>ZSH_THEME_HG_PROMPT_CLEAN<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;$ZSH_THEME_GIT_PROMPT_CLEAN&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>ZSH_THEME_RUBY_PROMPT_PREFIX<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;%{$fg[red]%}‹&#34;</span>
+</span></span><span style=display:flex><span>ZSH_THEME_RUBY_PROMPT_SUFFIX<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;› %{$reset_color%}&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;%{$fg[green]%}‹&#34;</span>
+</span></span><span style=display:flex><span>ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;› %{$reset_color%}&#34;</span>
+</span></span><span style=display:flex><span>ZSH_THEME_VIRTUALENV_PREFIX<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;$ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX&#34;</span>
+</span></span><span style=display:flex><span>ZSH_THEME_VIRTUALENV_SUFFIX<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;$ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX&#34;</span>
+</span></span></code></pre></div></article></div><div class="meta article-card"><div class=row><span class=label><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M32 456a24 24 0 0024 24h4e2a24 24 0 0024-24V176H32zm320-244a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm-80-80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm-80-80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm-80-80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zm0 80a4 4 0 014-4h40a4 4 0 014 4v40a4 4 0 01-4 4h-40a4 4 0 01-4-4zM456 64h-55.92V32h-48v32H159.92V32h-48v32H56A23.8 23.8.0 0032 87.77V144h448V87.77A23.8 23.8.0 00456 64z"/></svg>Published At</span><time>2023-03-17 06:58 UTC</time></div><div class="row social-share"><span class=label><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M272 176v161h-32V176H92a12 12 0 00-12 12v280a12 12 0 0012 12h328a12 12 0 0012-12V188a12 12 0 00-12-12zm0-83.37 64 64L358.63 134 256 31.37 153.37 134 176 156.63l64-64V176h32V92.63z"/></svg>Share with</span>
+<a target=_blank title="share to reddit" rel="noopener noreferrer" aria-label="share 电脑安装 anaconda 后，激活环境导致 zsh 主题失效解决方法 on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fblog.greycode.top%2fissues-blog%2fposts%2f14%2f&title=%e7%94%b5%e8%84%91%e5%ae%89%e8%a3%85%20anaconda%20%e5%90%8e%ef%bc%8c%e6%bf%80%e6%b4%bb%e7%8e%af%e5%a2%83%e5%af%bc%e8%87%b4%20zsh%20%e4%b8%bb%e9%a2%98%e5%a4%b1%e6%95%88%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512" fill="currentcolor" stroke="currentcolor" stroke-width="10"><path d="M324 256a36 36 0 1036 36 36 36 0 00-36-36z"/><circle cx="188" cy="292" r="36" transform="rotate(-22.5 187.997 291.992)"/><path d="M496 253.77c0-31.19-25.14-56.56-56-56.56a55.72 55.72.0 00-35.61 12.86c-35-23.77-80.78-38.32-129.65-41.27l22-79 66.41 13.2c1.9 26.48 24 47.49 50.65 47.49 28 0 50.78-23 50.78-51.21S441 48 413 48c-19.53.0-36.31 11.19-44.85 28.77l-90-17.89-31.1 109.52-4.63.13c-50.63 2.21-98.34 16.93-134.77 41.53A55.38 55.38.0 0072 197.21c-30.89.0-56 25.37-56 56.56a56.43 56.43.0 0028.11 49.06 98.65 98.65.0 00-.89 13.34c.11 39.74 22.49 77 63 105C146.36 448.77 199.51 464 256 464s109.76-15.23 149.83-42.89c40.53-28 62.85-65.27 62.85-105.06a109.32 109.32.0 00-.84-13.3A56.32 56.32.0 00496 253.77zM414 75a24 24 0 11-24 24 24 24 0 0124-24zM42.72 253.77a29.6 29.6.0 0129.42-29.71 29 29 0 0113.62 3.43c-15.5 14.41-26.93 30.41-34.07 47.68a30.23 30.23.0 01-8.97-21.4zM390.82 399c-35.74 24.59-83.6 38.14-134.77 38.14S157 423.61 121.29 399c-33-22.79-51.24-52.26-51.24-83A78.5 78.5.0 0175 288.72c5.68-15.74 16.16-30.48 31.15-43.79a155.17 155.17.0 0114.76-11.53l.3-.21.24-.17c35.72-24.52 83.52-38 134.61-38s98.9 13.51 134.62 38l.23.17.34.25A156.57 156.57.0 01406 244.92c15 13.32 25.48 28.05 31.16 43.81a85.44 85.44.0 014.31 17.67 77.29 77.29.0 01.6 9.65c-.01 30.72-18.21 60.19-51.25 82.95zm69.6-123.92c-7.13-17.28-18.56-33.29-34.07-47.72A29.09 29.09.0 01440 224a29.59 29.59.0 0129.41 29.71 30.07 30.07.0 01-8.99 21.39z"/><path d="M323.23 362.22c-.25.25-25.56 26.07-67.15 26.27-42-.2-66.28-25.23-67.31-26.27a4.14 4.14.0 00-5.83.0l-13.7 13.47a4.15 4.15.0 000 5.89c3.4 3.4 34.7 34.23 86.78 34.45 51.94-.22 83.38-31.05 86.78-34.45a4.16 4.16.0 000-5.9l-13.71-13.47a4.13 4.13.0 00-5.81.0z"/></svg></a><a target=_blank title="share to twitter" rel="noopener noreferrer" aria-label="share 电脑安装 anaconda 后，激活环境导致 zsh 主题失效解决方法 on twitter" href="https://twitter.com/intent/tweet/?text=%e7%94%b5%e8%84%91%e5%ae%89%e8%a3%85%20anaconda%20%e5%90%8e%ef%bc%8c%e6%bf%80%e6%b4%bb%e7%8e%af%e5%a2%83%e5%af%bc%e8%87%b4%20zsh%20%e4%b8%bb%e9%a2%98%e5%a4%b1%e6%95%88%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95&url=https%3a%2f%2fblog.greycode.top%2fissues-blog%2fposts%2f14%2f&hashtags="><svg class="ionicon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="fill:none" stroke="currentcolor" stroke-width="2"><path d="M23 3a10.9 10.9.0 01-3.14 1.53 4.48 4.48.0 00-7.86 3v1A10.66 10.66.0 013 4s-4 9 5 13a11.64 11.64.0 01-7 2c9 5 20 0 20-11.5a4.5 4.5.0 00-.08-.83A7.72 7.72.0 0023 3z"/></svg></a><a target=_blank title="share to facebook" rel="noopener noreferrer" aria-label="share 电脑安装 anaconda 后，激活环境导致 zsh 主题失效解决方法 on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fblog.greycode.top%2fissues-blog%2fposts%2f14%2f"><svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 24 24" style="fill:none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a></div></div></div></main><footer id=footer><div class="container has-padding is-flex"><ul class=links><li><a class="nav-link navbar-button" href=https://blog.greycode.top/issues-blog/index.xml type=application/rss+xml>RSS</a></li><li><a rel=nofollow target=_blank href=https://github.com/wayjam/hugo-theme-fluency title="using Hugo theme fluency">Theme Fluency</a></li><li><a rel=nofollow target=_blank href=https://gohugo.io title="Built with hugo">Built with Hugo</a></li></ul><div class=copyright>&copy; 2023 Issues Blog</div></div></footer><script>window.FluencyCopyIcon=`
+
+
+
+
+
+
+\u003csvg xmlns=\u0027http://www.w3.org/2000/svg\u0027 class=\u0027ionicon\u0027 viewBox=\u00270 0 512 512\u0027\u003e\u003crect x=\u0027128\u0027 y=\u0027128\u0027 width=\u0027336\u0027 height=\u0027336\u0027 rx=\u002757\u0027 ry=\u002757\u0027 stroke-linejoin=\u0027round\u0027 class=\u0027ionicon-fill-none ionicon-stroke-width\u0027/\u003e\u003cpath d=\u0027M383.5 128l.5-24a56.16 56.16 0 00-56-56H112a64.19 64.19 0 00-64 64v216a56.16 56.16 0 0056 56h24\u0027 stroke-linecap=\u0027round\u0027 stroke-linejoin=\u0027round\u0027 class=\u0027ionicon-fill-none ionicon-stroke-width\u0027/\u003e\u003c/svg\u003e
+
+
+
+
+
+
+
+
+
+
+`</script><script defer src=https://blog.greycode.top/issues-blog/js/main.min.22edf5bac5dfa68a0215a42702e2a71503d57bedadc157af46b990895734f033.js integrity="sha256-Iu31usXfpooCFaQnAuKnFQPVe+2twVevRrmQiVc08DM=" crossorigin=anonymous async></script><noscript><style type=text/css>#theme-selector-button{display:none}</style></noscript></body></html>
