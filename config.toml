@@ -2,4 +2,4 @@ baseURL = 'https://blog.greycode.top/issues-blog/'
 languageCode = 'en-us'
 title = 'Issues Blog'
 
-theme = 'nostyleplease'
+theme = 'fluency'
