@@ -23,7 +23,7 @@ jobs:
       - name: Build
         run: |
           hugo new posts/$NUMBER.md
-          sed '2c title: $TITLE' content/posts/$NUMBER.md
+          sed -i '2c title: $TITLE' content/posts/$NUMBER.md
           echo "$BODY" >> content/posts/$NUMBER.md
 
           git config --global user.email "zhengminghui99@gmail.com"
