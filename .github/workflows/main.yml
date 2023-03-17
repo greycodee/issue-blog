@@ -24,17 +24,20 @@ jobs:
         run: |
           hugo new posts/$NUMBER.md
           echo $BODY >> content/posts/$NUMBER.md
+          git config --global user.email "zhengminghui99@gmail.com"
+          git config --global user.name "greycodee"
           git add .
-          git commit -m 'update'
-          git push origin blog
+          git commit -m "Commit in Action"
+          git push
           hugo --gc --minify
         env:
           NUMBER: ${{ github.event.issue.number }}
           BODY: ${{ github.event.issue.body }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/blog'
         with:
           github_token: ${{ secrets.TOKEN }}
           publish_dir: ./public
