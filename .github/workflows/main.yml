@@ -23,7 +23,7 @@ jobs:
       - name: Build
         run: |
           hugo new posts/$NUMBER.md
-          cat $BODY >> /home/runner/work/issues-blog/issues-blog/content/posts/$NUMBER.md
+          cat $BODY >> content/posts/$NUMBER.md
           git add .
           git commit -m 'update'
           git push origin blog
