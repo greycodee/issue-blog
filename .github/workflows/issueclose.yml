@@ -1,0 +1,22 @@
+on:
+  issues:
+    types: [closed]
+
+jobs:
+
+  issues:
+    name: Issues Close
+    if: ${{ !github.event.issue.pull_request }}
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Build
+        run: |
+          echo $TITLE
+          echo $NUMBER
+          echo $BODY
+        env:
+          TITLE: ${{ github.event.issue.title }}
+          NUMBER: ${{ github.event.issue.number }}
+          BODY: ${{ github.event.issue.body }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+
