@@ -1,0 +1,19 @@
+on:
+  issues:
+    types: [opened]
+
+jobs:
+
+  issues:
+    name: Issues
+    if: ${{ !github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo number on issue $NUMBER
+        env:
+          NUMBER: ${{ github.event.issue.number }}
+      - run: |
+          echo A body on issue $BODY
+        env:
+          BODY: ${{ github.event.issue.body }}
