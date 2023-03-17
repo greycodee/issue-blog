@@ -24,6 +24,9 @@ jobs:
         run: |
           hugo new posts/$NUMBER.md
           cat $BODY >> posts/$NUMBER.md
+          git add .
+          git commit -m 'update'
+          git push origin blog
           hugo --gc --minify
         env:
           NUMBER: ${{ github.event.issue.number }}
