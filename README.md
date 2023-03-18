@@ -1,10 +1,14 @@
-# 目录
+# 同步博客
 
-## 学习
+自动同步博客地址：https://blog.greycode.top/issues-blog/
+
+## 目录
+
+### 学习
 - [OpenResty 安装入门教程](https://github.com/greycodee/issues-blog/issues/8)
 - [高性能网关基石——OpenResty](https://github.com/greycodee/issues-blog/issues/15)
 
-## 工具
+### 工具
 - [使用certbot](https://github.com/greycodee/issues-blog/issues/3)
 - [使用 ab 命令对 http 服务进行压测](https://github.com/greycodee/issues-blog/issues/4)
 - [使用 http_load 对 http 服务进行压测](https://github.com/greycodee/issues-blog/issues/5)
@@ -12,7 +16,7 @@
 - [coc.nvim 插件安装](https://github.com/greycodee/issues-blog/issues/17)
 - [neovim 配置 nvim-tree 文件树](https://github.com/greycodee/issues-blog/issues/19)
 
-## 日常
+### 日常
 - [nginx 配置反向代理后响应502解决办法](https://github.com/greycodee/issue-blog/issues/1#issue-1456487046)
 - [Oracle Cloud 实例开启端口访问](https://github.com/greycodee/issue-blog/issues/2#issue-1456487307)
 - [Docker 客户端(Linux)配置代理 pull 镜像](https://github.com/greycodee/issue-blog/issues/11)
@@ -23,6 +27,6 @@
 - [VSCode 设置 markdown snippets](https://github.com/greycodee/issues-blog/issues/23)
 - [oci-go-sdk 配置文件创建流程](https://github.com/greycodee/issues-blog/issues/23)
 
-## 搞机
+### 搞机
 - [小米(umi)使用 fastboot 刷机](https://github.com/greycodee/issues-blog/issues/6)
 - [小米(umi)刷入 Magisk](https://github.com/greycodee/issues-blog/issues/7)
