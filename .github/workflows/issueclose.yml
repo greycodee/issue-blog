@@ -3,20 +3,40 @@ on:
     types: [closed]
 
 jobs:
-
   issues:
-    name: Issues Close
+    name: Issues
     if: ${{ !github.event.issue.pull_request }}
     runs-on: ubuntu-20.04
     steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.108.0'
+          extended: true
+
       - name: Build
         run: |
-          echo $TITLE
-          echo $NUMBER
-          echo $BODY
+          rm content/posts/$NUMBER.md
+
+          git config --global user.email "zhengminghui99@gmail.com"
+          git config --global user.name "greycodee"
+          git add .
+          git commit -m "Commit in Action"
+          git push
+          hugo --gc --minify
         env:
-          TITLE: ${{ github.event.issue.title }}
           NUMBER: ${{ github.event.issue.number }}
-          BODY: ${{ github.event.issue.body }}
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.TOKEN }}
+          publish_dir: ./public
 

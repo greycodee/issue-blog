@@ -3,7 +3,6 @@ on:
     types: [opened]
 
 jobs:
-
   issues:
     name: Issues
     if: ${{ !github.event.issue.pull_request }}
