@@ -1,4 +1,30 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Issues Blog</title><link>https://blog.greycode.top/issues-blog/</link><description>Recent content on Issues Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 14 Apr 2023 11:04:46 +0000</lastBuildDate><atom:link href="https://blog.greycode.top/issues-blog/index.xml" rel="self" type="application/rss+xml"/><item><title>在vm虚拟机中的Linux使用宿主机的代理</title><link>https://blog.greycode.top/issues-blog/posts/46/</link><pubDate>Fri, 14 Apr 2023 11:04:46 +0000</pubDate><guid>https://blog.greycode.top/issues-blog/posts/46/</guid><description>查看宿主机的 VM 虚拟机的网卡
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Issues Blog</title><link>https://blog.greycode.top/issues-blog/</link><description>Recent content on Issues Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 18 Jun 2023 02:19:18 +0000</lastBuildDate><atom:link href="https://blog.greycode.top/issues-blog/index.xml" rel="self" type="application/rss+xml"/><item><title>tmux 中色彩设置和外部终端不一样解决方法</title><link>https://blog.greycode.top/issues-blog/posts/48/</link><pubDate>Sun, 18 Jun 2023 02:19:18 +0000</pubDate><guid>https://blog.greycode.top/issues-blog/posts/48/</guid><description>在tmux外的 TERM 的变量值是：
+❯ echo $TERM xterm-256color 在tmux内的值是：
+❯ echo $TERM screen 问题 导致在tmux中显示的颜色和真正终端的颜色有区别
+解决方法 在 ~/.tmux.conf 文件中配置如下配置（没有这个文件就创建一个）
+set -g default-terminal &amp;#34;xterm-256color&amp;#34; 然后关闭 tmux 重新打开，就恢复正常了</description></item><item><title>vim 工作流快捷键笔记</title><link>https://blog.greycode.top/issues-blog/posts/47/</link><pubDate>Sun, 18 Jun 2023 02:14:55 +0000</pubDate><guid>https://blog.greycode.top/issues-blog/posts/47/</guid><description>neovim 快捷键 h、j、k、l：分别向左、下、上、右移动光标。 w、b、e：分别向前移动一个单词、向后移动一个单词、移动到单词末尾。 0、$：分别移动到行首、行尾。 gg、G：分别移动到文件开头、文件结尾。 Ctrl+f、Ctrl+b：分别向前、向后翻页。 Ctrl+u、Ctrl+d：分别向上、向下滚动半页。 i、a、o：分别进入插入模式、在光标后插入、在下一行插入。 x、dd、yy：分别删除光标所在字符、删除当前行、复制当前行。 p、P：分别在光标后、光标前粘贴文本。 :w、:q、:wq：分别保存文件、退出文件、保存并退出文件。 :e、:sp、:vsp：分别打开新文件、在水平方向分割窗口、在垂直方向分割窗口。 :tabnew、:tabnext、:tabprev：分别创建新标签页、切换到下一个标签页、切换到上一个标签页。 Ctrl+w w：在窗口之间循环切换焦点。 Ctrl+w h、Ctrl+w j、Ctrl+w k、Ctrl+w l：分别将焦点切换到左边、下面、上面、右边的窗口。 Ctrl+w H、Ctrl+w J、Ctrl+w K、Ctrl+w L：分别将当前窗口调整到左边、下面、上面、右边的位置。 tmux 快捷键 ctrl+b w：查看当前所有窗口 Ctrl+b：默认的前缀键，用于触发 tmux 命令。 Ctrl+b ?：显示所有快捷键的帮助信息。 Ctrl+b &amp;#34;：将当前窗格垂直分割。 Ctrl+b %：将当前窗格水平分割。 Ctrl+b 方向键：在窗格之间切换焦点。 Ctrl+b z：最大化或恢复当前窗格。 Ctrl+b c：创建一个新窗口。 Ctrl+b 数字键：切换到指定编号的窗口。 Ctrl+b ,：重命名当前窗口。 Ctrl+b &amp;amp;：关闭当前窗口。 ctrl+b x：关闭当前分割窗口。 Ctrl+b d：将当前会话分离，以便稍后重新连接。 tmux attach：重新连接到之前分离的会话。 命令 :NvimTreeToggle #在 neovim 界面打开 nvim-tree # 快捷键 ctrl+n</description></item><item><title>在Linux中使用多个Jetbrains的软件时状态栏只显示一个图标问题</title><link>https://blog.greycode.top/issues-blog/posts/49/</link><pubDate>Sat, 17 Jun 2023 05:56:51 +0000</pubDate><guid>https://blog.greycode.top/issues-blog/posts/49/</guid><description>问题描述 在 Linux 中同时打开 DataGrip 和 Idea 两个软件时，状态栏只显示一个图标，有时显示 DataGrip 图标，有时显示 Idea 图片，并且点击这个任务图标时，会列出 DataGrip 和 Idea 所有的活动窗口。
+解决方法 在 Linux 的桌面环境中，StartupWMClass 字段用于指定应用程序的窗口管理器类名。窗口管理器使用这个类名来识别应用程序的窗口，并将其与应用程序的启动器图标关联起来。由于这两个软件是同一家公司生产的，所以类名的话应该也是一样的，所以我们只要在 desktop 文件中添加 StartupWMClass 字段，来把它们区分开来就可以解决这个问题。
+/usr/share/applications/IdeaIU.desktop [Desktop Entry]
+Version=2022.3.2
+Name=IntelliJ IDEA
+Comment=IntelliJ IDEA
+Exec=/usr/local/share/idea-IU/bin/idea.sh
+StartupNotify=true
+Terminal=false
+Icon=/usr/local/share/idea-IU/bin/idea.png
+Type=Application
+Categories=Development
+StartupWMClass=jetbrains-idea /usr/share/applications/DataGrip.desktop [Desktop Entry]
+Version=2022.3.3
+Name=DataGrip
+Exec=/usr/local/share/DataGrip-2022.3.3/bin/datagrip.sh
+StartupNotify=true
+Terminal=false
+Icon=/usr/local/share/DataGrip-2022.3.3/bin/datagrip.png
+Type=Application
+Categories=Development
+StartupWMClass=jetbrains-datagrip 原理 通常，当您在桌面环境中启动一个应用程序时，桌面环境会在任务栏或者应用程序启动器中显示一个图标。当您单击这个图标时，桌面环境会启动应用程序并显示它的窗口。如果应用程序的窗口管理器类名与应用程序的启动器图标关联起来，那么当您单击启动器图标时，窗口管理器就可以找到应用程序的窗口并将其显示出来。
+通常情况下，StartupWMClass 字段的值应该是应用程序的名称或者主窗口的类名。您可以使用 xprop 命令来查看窗口的 WM_CLASS 属性，以确定应该使用哪个类名。</description></item><item><title>在vm虚拟机中的Linux使用宿主机的代理</title><link>https://blog.greycode.top/issues-blog/posts/46/</link><pubDate>Fri, 14 Apr 2023 11:04:46 +0000</pubDate><guid>https://blog.greycode.top/issues-blog/posts/46/</guid><description>查看宿主机的 VM 虚拟机的网卡
 以 Windows 为例
 $ ipconfig 找到 VM 的网卡
 以太网适配器 VMware Network Adapter VMnet1: 连接特定的 DNS 后缀 . . . . . . . : 本地链接 IPv6 地址. . . . . . . . : fe80::140b:ff05:635:665b%7 IPv4 地址 . . . . . . . . . . . . : 192.168.38.1 子网掩码 . . . . . . . . . . . . : 255.255.255.0 默认网关.</description></item><item><title>XDP、BPF 和 eBPF 三者区别</title><link>https://blog.greycode.top/issues-blog/posts/45/</link><pubDate>Fri, 24 Mar 2023 03:16:04 +0000</pubDate><guid>https://blog.greycode.top/issues-blog/posts/45/</guid><description>XDP、BPF和eBPF都是Linux内核中的技术，用于高效地处理网络数据包。它们之间的区别如下：
